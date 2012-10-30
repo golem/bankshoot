@@ -15,7 +15,7 @@ endif
 #CFLAGS=-W -Wall -Iinclude/
 #LDFLAGS=-Llib/ -lsfml-graphics -lsfml-window -lsfml-system
 EXEC=bankshoot
-SRC= $(wildcard *.cpp)
+SRC= $(wildcard src/*.cpp)
 OBJ= $(SRC:.cpp=.o)
 
 # http://stackoverflow.com/questions/2394609/makefile-header-dependencies
@@ -40,7 +40,7 @@ bankshoot: $(OBJ)
 .PHONY: clean mrproper
 
 clean:
-	rm -rf *.o
+	rm -rf src/*.o
 
 mrproper: clean
 	rm -rf $(EXEC)
