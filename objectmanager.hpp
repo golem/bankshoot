@@ -17,6 +17,7 @@ class ObjectManager
         
         void delete_all();
         void draw_all(sf::RenderWindow& fen) const;
+        void update_all(const sf::RenderWindow& fen);
         
         void operator+=(VisibleObject * obj);
     

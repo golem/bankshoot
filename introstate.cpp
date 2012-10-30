@@ -34,7 +34,7 @@ void IntroState::handle_events(Engine * game)
 
 void IntroState::update(Engine * game)
 {
-    
+    _objects.update_all(game->get_screen());
 }
 
 void IntroState::draw(Engine * game) const

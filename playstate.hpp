@@ -2,6 +2,8 @@
 #define PLAYSTATE_HPP
 
 #include "gamestate.hpp"
+#include "repeatingobject.hpp"
+#include "objectmanager.hpp"
 #include <SFML/Graphics.hpp>
 
 class PlayState: public GameState
@@ -18,8 +20,9 @@ class PlayState: public GameState
         void draw(Engine * game) const;
     
     private:
-        sf::Image _bg;
-        sf::Sprite _bg_sprite;
+        //~ sf::Image _bg;
+        //~ sf::Sprite _bg_sprite;
+        ObjectManager _objects;
 };
 
 #endif /* INTROSTATE_HPP */ 

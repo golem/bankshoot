@@ -1,5 +1,7 @@
 #include "objectmanager.hpp"
 
+#include <iostream>
+
 void ObjectManager::operator+=(VisibleObject * obj)
 {
     _objects.push_back(obj);
@@ -11,7 +13,15 @@ void ObjectManager::draw_all(sf::RenderWindow& fen) const
         _objects[i]->draw(fen);
     }
 }
-#include <iostream>
+
+void ObjectManager::update_all(const sf::RenderWindow& fen)
+{
+    for (size_t i = 0; i < _objects.size(); ++i) {
+        //~ std::cout << "update d'un objet" << std::endl;
+        _objects[i]->update(fen);
+    }
+}
+
 void ObjectManager::delete_all()
 {
     for (size_t i = 0; i < _objects.size(); ++i) {

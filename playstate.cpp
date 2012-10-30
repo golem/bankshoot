@@ -2,13 +2,14 @@
 
 void PlayState::init()
 {
-    _bg.LoadFromFile("./media/icone.bmp");
-    _bg_sprite.SetImage(_bg);
+    //~ _bg.LoadFromFile("./media/icone.bmp");
+    //~ _bg_sprite.SetImage(_bg);
+    _objects += new RepeatingObject("./media/background.bmp");
 }
 
 void PlayState::cleanup()
 {
-    
+    _objects.delete_all();
 }
 
 void PlayState::handle_events(Engine * game)
@@ -32,10 +33,11 @@ void PlayState::handle_events(Engine * game)
 
 void PlayState::update(Engine * game)
 {
-    
+    _objects.update_all(game->get_screen());
 }
 
 void PlayState::draw(Engine * game) const
 {
-    game->get_screen().Draw(_bg_sprite);
+    //~ game->get_screen().Draw(_bg_sprite);
+    _objects.draw_all(game->get_screen());
 }
