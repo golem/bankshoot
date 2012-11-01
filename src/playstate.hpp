@@ -4,6 +4,7 @@
 #include "gamestate.hpp"
 #include "background.hpp"
 #include "objectmanager.hpp"
+#include "player.hpp"
 #include <SFML/Graphics.hpp>
 
 class PlayState: public GameState
