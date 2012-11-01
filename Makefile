@@ -19,22 +19,24 @@ SRC= $(wildcard src/*.cpp)
 OBJ= $(SRC:.cpp=.o)
 
 # http://stackoverflow.com/questions/2394609/makefile-header-dependencies
-includes = $(wildcard src/*.hpp)
+#includes = $(wildcard src/*.hpp)
 
 all: $(EXEC)
 
-#depend: .depend
+depend: .depend
 
-#.depend: $(SRC)
-#	rm -f ./.depend
-#	$(CC) $(CFLAGS) -MM $^ >./.depend;
+.depend: $(SRC)
+	rm -f ./.depend
+	$(CC) $(CFLAGS) -MM $^ >./.depend;
+	@# Hack un peu sale pour rajouter des 'src/' où il faut dans le .depend
+	sed -i 's/[a-zA-Z0-9]*\.o/src\/&/' .depend
 
-#-include .depend
+-include .depend
 
 bankshoot: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o: %.cpp ${includes}
+%.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY: clean mrproper
@@ -44,4 +46,4 @@ clean:
 
 mrproper: clean
 	rm -rf $(EXEC)
-#	rm ./.depend
+	rm ./.depend
