@@ -19,22 +19,22 @@ SRC= $(wildcard src/*.cpp)
 OBJ= $(SRC:.cpp=.o)
 
 # http://stackoverflow.com/questions/2394609/makefile-header-dependencies
-#includes = $(wildcard *.hpp)
+includes = $(wildcard src/*.hpp)
 
 all: $(EXEC)
 
-depend: .depend
+#depend: .depend
 
-.depend: $(SRC)
-	rm -f ./.depend
-	$(CC) $(CFLAGS) -MM $^ >./.depend;
+#.depend: $(SRC)
+#	rm -f ./.depend
+#	$(CC) $(CFLAGS) -MM $^ >./.depend;
 
--include .depend
+#-include .depend
 
 bankshoot: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o: %.cpp
+%.o: %.cpp ${includes}
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY: clean mrproper
@@ -44,4 +44,4 @@ clean:
 
 mrproper: clean
 	rm -rf $(EXEC)
-	rm ./.depend
+#	rm ./.depend
