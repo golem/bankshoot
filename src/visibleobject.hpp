@@ -11,6 +11,7 @@ class VisibleObject
         VisibleObject(const std::string& filename) : _img(), _sprite() 
         {
             _img.LoadFromFile(filename);
+            _img.SetSmooth(false); // Pour éviter le filtrage
             _sprite.SetImage(_img);
             std::cout << "Création d'un objet" << std::endl;
         }

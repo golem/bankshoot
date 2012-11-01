@@ -2,7 +2,7 @@
 #define PLAYSTATE_HPP
 
 #include "gamestate.hpp"
-#include "repeatingobject.hpp"
+#include "background.hpp"
 #include "objectmanager.hpp"
 #include <SFML/Graphics.hpp>
 

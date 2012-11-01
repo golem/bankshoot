@@ -4,7 +4,7 @@ void PlayState::init()
 {
     //~ _bg.LoadFromFile("./media/icone.bmp");
     //~ _bg_sprite.SetImage(_bg);
-    _objects += new RepeatingObject("./media/background.bmp");
+    _objects += new Background("./media/background_test.png", 100);
 }
 
 void PlayState::cleanup()
