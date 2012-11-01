@@ -17,7 +17,7 @@ class Engine
                      _running(true),
                      _fenetre(sf::VideoMode(largeur, hauteur, 32), titre,
                               sf::Style::Close, sf::WindowSettings()),
-                     _states(0), _map_states() { }
+                     _states(0), _map_states() { _fenetre.UseVerticalSync(true); }
         ~Engine();
         
         void change_state(GameState * state);

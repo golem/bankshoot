@@ -11,7 +11,7 @@ int main(void)
     Engine game("Kikoo");
     game.add_state("Intro", new IntroState());
     game.add_state("Play", new PlayState());
-    game.change_state(game.get_state("Intro"));
+    game.change_state(game.get_state("Play"));
     
     // Boucle principale
     while(game.is_running()) {
