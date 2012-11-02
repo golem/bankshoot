@@ -1,6 +1,6 @@
-#include "player.hpp"
+#include "banquier.hpp"
 
-void Player::update(const sf::RenderWindow& fen)
+void Banquier::update(const sf::RenderWindow& fen)
 {
     const sf::Input& input = fen.GetInput();
     float dt = fen.GetFrameTime();
