@@ -6,6 +6,7 @@ void PlayState::init()
     //~ _bg_sprite.SetImage(_bg);
     _objects += new Background("./media/background_test.png", 100);
     _objects += new Banquier("./media/icone.bmp");
+    _objects += new Enemy("./media/icone.bmp");
 }
 
 void PlayState::cleanup()

@@ -4,8 +4,8 @@ void IntroState::init()
 {
     //~ _bg.LoadFromFile("./media/background.bmp");
     //~ _bg_sprite.SetImage(_bg);
-    _objects += new VisibleObject("./media/background.bmp");
-    _objects += new VisibleObject("./media/icone.bmp");
+    _objects += new Background("./media/background.bmp", 0);
+    _objects += new Background("./media/icone.bmp", 0);
 }
 
 void IntroState::cleanup()

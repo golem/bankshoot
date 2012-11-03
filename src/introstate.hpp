@@ -2,7 +2,7 @@
 #define INTROSTATE_HPP
 
 #include "gamestate.hpp"
-#include "visibleobject.hpp"
+#include "background.hpp"
 #include "objectmanager.hpp"
 //~ #include <SFML/Graphics.hpp>
 

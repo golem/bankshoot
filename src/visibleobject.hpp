@@ -18,7 +18,7 @@ class VisibleObject
         virtual ~VisibleObject() { std::cout << "Destruction d'un objet" << std::endl; }
         
         virtual void draw(sf::RenderWindow& fen) const;
-        virtual void update(const sf::RenderWindow& fen);
+        virtual void update(const sf::RenderWindow& fen) = 0;
     
     protected:
         sf::Image _img;
