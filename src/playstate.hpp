@@ -5,7 +5,7 @@
 #include "background.hpp"
 #include "objectmanager.hpp"
 #include "banquier.hpp"
-#include "enemy.hpp"
+#include "voleur.hpp"
 #include <SFML/Graphics.hpp>
 
 class PlayState: public GameState

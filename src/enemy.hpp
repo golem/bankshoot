@@ -6,15 +6,13 @@
 class Enemy: public VisibleObject
 {
     public:
-        Enemy(const std::string& filename, int z=1) : VisibleObject(filename, z)
-        {
-            _vx = 0.0f;
-            _vy = 100.0f;
-        }
+        virtual ~Enemy() { }
             
-        void update(const sf::RenderWindow& fen);
+        virtual void update(const sf::RenderWindow& fen);
         
-    private:
+    protected:
+        // Constructeur protégé pour préciser que c'est une classe abstraite
+        Enemy(const std::string& filename, int z=1) : VisibleObject(filename, z) { }
         float _vx;
         float _vy;
 };
