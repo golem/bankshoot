@@ -6,7 +6,7 @@
 class Background: public VisibleObject
 {
     public:
-        Background(const std::string& filename, int vitesse) : VisibleObject(filename), _vitesse(vitesse)
+        Background(const std::string& filename, int vitesse, int z=-1) : VisibleObject(filename, z), _vitesse(vitesse)
         {
             _sprite_bis.SetImage(_img);
             _position[0] = -(float) _img.GetHeight();

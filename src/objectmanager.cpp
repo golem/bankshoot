@@ -4,40 +4,27 @@
 
 void ObjectManager::operator+=(VisibleObject * obj)
 {
-    _objects.push_back(obj);
+    _objects.insert(obj);
 }
 
 void ObjectManager::draw_all(sf::RenderWindow& fen) const
 {
-    for (size_t i = 0; i < _objects.size(); ++i) {
-        _objects[i]->draw(fen);
+    for (ObjList::const_iterator it = _objects.begin(); it != _objects.end(); ++it) {
+        (*it)->draw(fen);
     }
 }
 
 void ObjectManager::update_all(const sf::RenderWindow& fen)
 {
-    for (size_t i = 0; i < _objects.size(); ++i) {
-        //~ std::cout << "update d'un objet" << std::endl;
-        _objects[i]->update(fen);
+    for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ++it) {
+        (*it)->update(fen);
     }
 }
 
 void ObjectManager::delete_all()
 {
-    for (size_t i = 0; i < _objects.size(); ++i) {
-        std::cout << "delete" << std::endl;
-        delete _objects[i];
-        //~ std::cout << "pop" << _objects.size() << std::endl;
-        //~ _objects.pop_back();
+    for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ++it) {
+        delete (*it);
     }
     _objects.clear();
-    //~ for (std::vector<VisibleObject *>::iterator it = _objects.begin(); it != _objects.end(); ++it) {
-        //~ if (_objects.size() != 0) {
-            //~ std::cout << "delete" << std::endl;
-            //~ delete *it;
-            //~ std::cout << "pop" << _objects.size() << std::endl;
-            //~ _objects.erase(it);
-            //~ std::cout << "popé" << _objects.size() << std::endl;
-        //~ }
-    //~ }
 }
