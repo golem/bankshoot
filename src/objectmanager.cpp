@@ -1,8 +1,6 @@
 #include "objectmanager.hpp"
 
-#include <iostream>
-
-void ObjectManager::operator+=(VisibleObject * obj)
+void ObjectManager::operator+=(Object * obj)
 {
     _objects.insert(obj);
 }
@@ -10,7 +8,9 @@ void ObjectManager::operator+=(VisibleObject * obj)
 void ObjectManager::draw_all(sf::RenderWindow& fen) const
 {
     for (ObjList::const_iterator it = _objects.begin(); it != _objects.end(); ++it) {
-        (*it)->draw(fen);
+        VisibleObject * obj = dynamic_cast<VisibleObject*>(*it);
+        if (obj != NULL) obj->draw(fen);
+        //~ (*it)->draw(fen);
     }
 }
 

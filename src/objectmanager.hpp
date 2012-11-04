@@ -8,7 +8,7 @@
 
 struct ltObj
 {
-    bool operator()(VisibleObject * a, VisibleObject * b) const
+    bool operator()(Object * a, Object * b) const
     {
         return *a < *b;
     }
@@ -19,7 +19,7 @@ struct ltObj
 //(ce set est là pour dessiner les objets en fonction de leur "profondeur")
 //(c'est un multiset parce que plusieurs éléments avec la même profondeur
 //pourront exister (plusieurs ennemis par exemple))
-typedef std::multiset<VisibleObject *, ltObj> ObjList;
+typedef std::multiset<Object *, ltObj> ObjList;
 
 class ObjectManager
 {
@@ -34,7 +34,7 @@ class ObjectManager
         void draw_all(sf::RenderWindow& fen) const;
         void update_all(const sf::RenderWindow& fen);
         
-        void operator+=(VisibleObject * obj);
+        void operator+=(Object * obj);
     
     private:
         ObjList _objects;
