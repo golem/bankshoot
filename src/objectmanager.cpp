@@ -21,11 +21,12 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
     }
     // Deuxième boucle pour supprimer les objets qui ont été détruits.
     // Je pense que c'est plus sûr, mais je me trompe peut être
-    for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ++it) {
+    for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ) {
         if ((*it)->is_dead()) {
             delete (*it);
-            _objects.erase(it);
+            _objects.erase(it++); // cf. http://stackoverflow.com/a/263958
         }
+        else ++it;
     }
 }
 
