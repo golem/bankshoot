@@ -8,8 +8,8 @@ class Background: public VisibleObject
     public:
         Background(const std::string& filename, int vitesse, int z=-1) : VisibleObject(filename, z), _vitesse(vitesse)
         {
-            _sprite_bis.SetImage(_img);
-            _position[0] = -(float) _img.GetHeight();
+            _sprite_bis.SetImage(*_img);
+            _position[0] = -(float) _img->GetHeight();
             _position[1] = 0.0f;
         }
         
