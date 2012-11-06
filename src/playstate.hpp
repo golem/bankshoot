@@ -6,6 +6,7 @@
 #include "objectmanager.hpp"
 #include "banquier.hpp"
 #include "voleur.hpp"
+#include "fpscounter.hpp"
 #include <SFML/Graphics.hpp>
 
 class PlayState: public GameState

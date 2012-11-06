@@ -7,6 +7,7 @@ void PlayState::init()
     _objects += new Banquier("./media/icone.bmp");
     _objects += new Voleur("./media/icone.bmp");
     _objects += new Background("./media/background_test.png", 100);
+    _objects += new FPSCounter("./media/BOWSHADW.ttf");
 }
 
 void PlayState::cleanup()

@@ -10,6 +10,7 @@
 class VisibleObject : public Object
 {
     public:
+        VisibleObject(int z=0) : Object(z) { }
         VisibleObject(const std::string& filename, int z=0) : Object(z),
             _img(ResourceManager::get_img(filename)), _sprite()
         {

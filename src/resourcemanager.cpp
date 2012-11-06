@@ -2,6 +2,9 @@
 
 // Initialisation des attributs static
 ImgMap ResourceManager::_imgs;
+FontMap ResourceManager::_fonts;
+
+// ... Je verrais bien des templates par ici...
 
 sf::Image * ResourceManager::get_img(const std::string& filename)
 {
@@ -19,9 +22,27 @@ sf::Image * ResourceManager::get_img(const std::string& filename)
         return it->second;
 }
 
+sf::Font * ResourceManager::get_font(const std::string& filename)
+{
+    FontMap::iterator it = _fonts.find(filename);
+    // Si la fonte n'existe pas dans la map, on la charge et la renvoie
+    if (it == _fonts.end()) {
+        sf::Font * font = new sf::Font;
+        assert(font->LoadFromFile(filename));
+        _fonts.insert(std::make_pair(filename, font));
+        return font;
+    }
+    // Sinon on la renvoie tout simplement
+    else
+        return it->second;
+}
+
 void ResourceManager::cleanup()
 {
     for (ImgMap::iterator it = _imgs.begin(); it != _imgs.end(); ++it) {
+        delete it->second;
+    }
+    for (FontMap::iterator it = _fonts.begin(); it != _fonts.end(); ++it) {
         delete it->second;
     }
 }
