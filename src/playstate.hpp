@@ -7,6 +7,7 @@
 #include "banquier.hpp"
 #include "voleur.hpp"
 #include "fpscounter.hpp"
+#include "enemyfactory.hpp"
 #include <SFML/Graphics.hpp>
 
 class PlayState: public GameState
@@ -26,6 +27,7 @@ class PlayState: public GameState
         //~ sf::Image _bg;
         //~ sf::Sprite _bg_sprite;
         ObjectManager _objects;
+        EnemyFactory _factory;
 };
 
 #endif /* INTROSTATE_HPP */ 

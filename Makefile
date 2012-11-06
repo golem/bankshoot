@@ -1,6 +1,9 @@
 CC=g++
 
-COMMON_CFLAGS=-W -Wall -Iinclude/ -g
+# La directive -isystem <dir> permet de signaler à g++ que ce dossier contient
+# des headers qui ne seront pas modifiés (on ne les prend pas en compte dans 
+# la génération des dépendances).
+COMMON_CFLAGS=-W -Wall -isystem include/ -g
 
 # Le rpath permet d'encoder un chemin de recherche des librairies dans l'exécutable
 # pas besoin de changer LD_LIBRARY_PATH a priori, donc

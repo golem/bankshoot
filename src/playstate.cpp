@@ -4,7 +4,7 @@ void PlayState::init()
 {
     //~ _bg.LoadFromFile("./media/icone.bmp");
     //~ _bg_sprite.SetImage(_bg);
-    _objects += new Banquier("./media/icone.bmp");
+    _objects += new Banquier("./media/banquier2.png");
     _objects += new Voleur("./media/icone.bmp");
     _objects += new Background("./media/background_test.png", 100);
     _objects += new FPSCounter("./media/BOWSHADW.ttf");
@@ -37,6 +37,8 @@ void PlayState::handle_events(Engine * game)
 void PlayState::update(Engine * game)
 {
     _objects.update_all(game->get_screen());
+    if (_factory.has_enemy())
+        _objects += _factory.generate(_factory.get_type());
 }
 
 void PlayState::draw(Engine * game) const
