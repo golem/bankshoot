@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "visibleobject.hpp"
+#include "collidingobject.hpp"
 
 struct ltObj
 {

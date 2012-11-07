@@ -1,9 +1,9 @@
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
 
-#include "visibleobject.hpp"
+#include "collidingobject.hpp"
 
-class Enemy: public VisibleObject
+class Enemy: public CollidingObject
 {
     public:
         virtual ~Enemy() { }
@@ -12,7 +12,7 @@ class Enemy: public VisibleObject
         
     protected:
         // Constructeur protégé pour préciser que c'est une classe abstraite
-        Enemy(const std::string& filename, int z=1) : VisibleObject(filename, z) { }
+        Enemy(const std::string& filename, int z=1) : CollidingObject(filename, z) { }
         float _vx;
         float _vy;
 };

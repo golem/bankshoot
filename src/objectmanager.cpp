@@ -19,6 +19,17 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
     for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ++it) {
         (*it)->update(fen);
     }
+    // Une autre boucle pour gérer les collisions
+    // Pourrait peut-être être amélioré
+    for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ++it) {
+        CollidingObject * obj = dynamic_cast<CollidingObject*>(*it);
+        if (obj != NULL) {
+            for (ObjList::iterator it2 = _objects.begin(); it2 != _objects.end(); ++it2) {
+                CollidingObject * autre = dynamic_cast<CollidingObject*>(*it2);
+                if ((autre != NULL) && (obj != autre) && (obj->collides_with(*autre))) std::cout << "ouille" << std::endl;
+            }
+        }
+    }
     // Deuxième boucle pour supprimer les objets qui ont été détruits.
     // Je pense que c'est plus sûr, mais je me trompe peut être
     for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ) {
