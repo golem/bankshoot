@@ -10,6 +10,7 @@
 #include <sstream>
 
 #include "visibleobject.hpp"
+#include "constants.hpp"
 
 /**
  * @brief Objet permettant d'afficher le nombre d'images par seconde de l'application.
@@ -26,9 +27,12 @@ class FPSCounter: public VisibleObject
          * pour être au dessus de tous les autres objets.
          **/
         FPSCounter(const std::string& filename) : VisibleObject(50),
-                            _font(ResourceManager::get_font(filename))
+                            _font(ResourceManager::get_font(filename)),
+                            _elapsed_time(0.0f), _nb_images(0)
         {
             _texte.SetFont(*_font);
+            _texte.SetText("000");
+            _texte.SetPosition(SCREEN_WIDTH-_texte.GetRect().GetWidth(), 0*SCREEN_HEIGHT);
         }
         
         void draw(sf::RenderWindow& fen) const;
@@ -42,6 +46,8 @@ class FPSCounter: public VisibleObject
          **/
         sf::Font * _font;
         sf::String _texte; ///< Texte à afficher.
+        float _elapsed_time;
+        int _nb_images;
 };
 
 #endif /* FPSCOUNTER_HPP */ 
