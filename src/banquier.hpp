@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include "visibleobject.hpp"
+#include "constants.hpp"
 
 class Banquier: public VisibleObject
 {
@@ -9,7 +10,8 @@ class Banquier: public VisibleObject
         Banquier(const std::string& filename, int z=10) : VisibleObject(filename, z), _vx(200.0f), _vy(200.0f)
         {
            //TODO: Vitesses et position arbitraires, sûrement à changer, plus tard 
-           _sprite.SetPosition(200.0f, 2000.0f);
+           _sprite.SetSubRect(sf::IntRect(32, 43, 63, 0));
+           _sprite.SetPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
         }
         
         void update(const sf::RenderWindow& fen);
