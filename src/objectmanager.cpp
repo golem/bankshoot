@@ -26,7 +26,7 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
         if (obj != NULL) {
             for (ObjList::iterator it2 = _objects.begin(); it2 != _objects.end(); ++it2) {
                 CollidingObject * autre = dynamic_cast<CollidingObject*>(*it2);
-                if ((autre != NULL) && (obj != autre) && (obj->collides_with(*autre))) std::cout << "ouille" << std::endl;
+                if ((autre != NULL) && (obj != autre) && (obj->collides_with(*autre))) obj->collision(autre);
             }
         }
     }

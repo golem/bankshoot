@@ -2,6 +2,7 @@
 #define ENEMY_HPP
 
 #include "collidingobject.hpp"
+#include "banquier.hpp"
 
 class Enemy: public CollidingObject
 {
@@ -9,6 +10,8 @@ class Enemy: public CollidingObject
         virtual ~Enemy() { }
             
         virtual void update(const sf::RenderWindow& fen);
+        
+        virtual void collision(CollidingObject * o);
         
     protected:
         // Constructeur protégé pour préciser que c'est une classe abstraite

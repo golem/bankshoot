@@ -13,3 +13,11 @@ void Enemy::update(const sf::RenderWindow& fen)
         _die();
     }
 }
+
+void Enemy::collision(CollidingObject * o)
+{
+    Banquier * autre = dynamic_cast<Banquier*>(o);
+    if (autre != NULL) {
+        _die();
+    }
+}

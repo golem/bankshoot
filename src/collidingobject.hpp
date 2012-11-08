@@ -20,7 +20,7 @@ class CollidingObject : public VisibleObject
             return sf::FloatRect(pos.x, pos.y, pos.x + size.x, pos.y + size.y);
         }
         bool collides_with(const CollidingObject& o) { return this->get_rect().Intersects(o.get_rect()); }
-        //~ virtual void collision(VisibleObject& o) = 0;
+        virtual void collision(CollidingObject * o) = 0;
 };
 
 #endif /* COLLIDINGOBJECT_HPP */ 

@@ -21,3 +21,11 @@ void Banquier::update(const sf::RenderWindow& fen)
     if (pos.y >= fen.GetHeight() - size.y) pos.y = fen.GetHeight() - size.y;
     _sprite.SetPosition(pos);
 }
+
+void Banquier::collision(CollidingObject * o)
+{
+    Enemy * autre = dynamic_cast<Enemy*>(o);
+    if (autre != NULL) {
+        std::cout << "Meurs !" << std::endl;
+    }
+}

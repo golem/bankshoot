@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include "collidingobject.hpp"
+#include "enemy.hpp"
 
 class Banquier: public CollidingObject
 {
@@ -13,6 +14,8 @@ class Banquier: public CollidingObject
         }
         
         void update(const sf::RenderWindow& fen);
+        
+        void collision(CollidingObject * o);
         
     private:
         float _vx;
