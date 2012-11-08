@@ -1,24 +1,48 @@
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#ifndef BANQUIER_HPP
+#define BANQUIER_HPP
 
-#include "visibleobject.hpp"
+
+/**
+ * @file banquier.hpp
+ * @brief Contient la classe contrôlée par le joueur.
+ */
+
 #include "constants.hpp"
+#include "collidingobject.hpp"
+#include "enemy.hpp"
 
-class Banquier: public VisibleObject
+/**
+ * @brief Le personnage principal : un banquier qui défend la banque.
+ **/
+class Banquier: public CollidingObject
 {
     public:
-        Banquier(const std::string& filename, int z=10) : VisibleObject(filename, z), _vx(200.0f), _vy(200.0f)
+        /**
+         * @brief Constructeur.
+         *
+         * @param filename Le chemin de l'image à utiliser.
+         * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 10.)
+         **/
+        Banquier(const std::string& filename, int z=10) : CollidingObject(filename, z), _vx(200.0f), _vy(200.0f)
         {
            //TODO: Vitesses et position arbitraires, sûrement à changer, plus tard 
            _sprite.SetSubRect(sf::IntRect(32, 43, 63, 0));
            _sprite.SetPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
         }
         
+        /**
+         * @brief Déplace le banquier en fonction des touches appuyées.
+         *
+         * @param fen La fenêtre de rendu.
+         * @return void
+         **/
         void update(const sf::RenderWindow& fen);
+        
+        void collision(CollidingObject * o);
         
     private:
         float _vx;
         float _vy;
 };
 
-#endif /* PLAYER_HPP */ 
+#endif /* BANQUIER_HPP */ 
