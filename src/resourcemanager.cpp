@@ -13,6 +13,7 @@ sf::Image * ResourceManager::get_img(const std::string& filename)
     if (it == _imgs.end()) {
         sf::Image * img = new sf::Image;
         assert(img->LoadFromFile(filename));
+        img->CreateMaskFromColor(sf::Color(0x00, 0xff, 0x00), 0); // Placer un masque de couleur, fond verts
         img->SetSmooth(false); // Pour éviter le filtrage
         _imgs.insert(std::make_pair(filename, img));
         return img;
