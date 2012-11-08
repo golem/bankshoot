@@ -3,17 +3,18 @@
 
 /**
  * @file enemyfactory.hpp
- * @brief Génération aléatoire des ennemies
+ * @brief Génération aléatoire des ennemis
  */
 
 #include "enemy.hpp"
 
+#include <SFML/System/Clock.hpp>
 #include <cstdlib>
 #include <ctime>
 
 /**
  * @class EnemyFactory
- * @brief Classe générant les ennemies de manière aléatoire
+ * @brief Classe générant les ennemis de manière aléatoire
  */
 class EnemyFactory
 {
@@ -21,18 +22,23 @@ class EnemyFactory
 
         /**
          * @enum Enemy_type
-         * @brief Type d'ennemies
+         * @brief Type d'ennemis
          * 
          * Définir tous les types d'ennemies disponibles dans le jeu
          */
         enum Enemy_type {
-            thief /**< Ennemie du type \a Voleur*/
+            thief, /**< Ennemi du type \a Voleur*/
+            mafia
         };
         
         /**
          * @brief Constructeur
          */
-        EnemyFactory(): _has_enemy(false) { srand(time(NULL)); }
+        EnemyFactory()
+        {
+            srand(time(NULL));
+            _clock.Reset();
+        }
         
         /**
          * @brief Destructeur
@@ -40,36 +46,31 @@ class EnemyFactory
         ~EnemyFactory() {}
         
         /**
-         * @brief Créer un ennemie
-         * @param type : Type d'ennemie à créer
-         * @return Pointeur sur l'ennemie créé
+         * @brief Créer un ennemi
+         * @return Pointeur sur l'ennemi créé
          */
-        Enemy* generate(Enemy_type type);
-
-        /**
-         * @brief Vérifier si un ennemie est susceptible de créé
-         */
-        void check();
-
-        /**
-         * @brief Retourne \a true si un ennemie est disponible
-         */
-        bool has_enemy()
-        {
-            check();
-            return _has_enemy;
-        }
+        Enemy* generate() const;
         
         /**
-         * @brief Connaître le type d'ennemie à créer
+         * @brief Redémarre le \a clock
          */
-        Enemy_type get_type() const { return _type; }
-
-        static const int PROBABILITY = 100; /**< Probabilité de créer un ennemie */
+        void restart() { _clock.Reset(); }
+        
+        /**
+         * @brief Donne le temps de la dernière apparition d'un ennemi
+         * @return Temps
+         */
+        float get_last_enemy_time() { return _clock.GetElapsedTime(); }
 
     private:
-        bool _has_enemy; /**< \a true si un ennemie peut être créé */
-        Enemy_type _type; /**< Le type d'ennemie à créé */
+
+        /**
+         * @brief Retourne un type d'ennemi au hasard
+         * @return Type d'ennemi
+         */
+        Enemy_type random_type() const;
+
+        sf::Clock _clock; /**< Clock */
 };
 
 #endif
