@@ -17,7 +17,7 @@ int main(void)
     Engine game("Bank Shooter");
     game.add_state("Intro", new IntroState());
     game.add_state("Play", new PlayState());
-    game.change_state(game.get_state("Play"));
+    game.change_state("Play");
     // Boucle principale
     while(game.is_running()) {
         game.handle_events();

@@ -20,11 +20,6 @@ class GameState
         
         //~ virtual void pause() = 0;
         //~ virtual void resume() = 0;
-        
-        void change_state(Engine * game, GameState * state) const
-        {
-            game->change_state(state);
-        }
 };
 
 #endif /* GAMESTATE_HPP */ 

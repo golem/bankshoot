@@ -2,7 +2,7 @@
 #define CONSTANTS_HPP
 
 /**
- * @file constant.hpp
+ * @file constants.hpp
  * @brief Définition des constantes
  */
 

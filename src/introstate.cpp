@@ -27,7 +27,7 @@ void IntroState::handle_events(Engine * game)
         }
         // Appui sur Espace : on passe à l'état jeu
         if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
-            game->change_state(game->get_state("Play"));
+            game->change_state("Play");
         }
     }
 }

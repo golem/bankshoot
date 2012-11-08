@@ -25,7 +25,7 @@ void PlayState::handle_events(Engine * game)
         }
         // Appui sur Esc : on retourne à l'intro
         if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
-            game->change_state(game->get_state("Intro"));
+            game->change_state("Intro");
         }
         //~ // Appui sur Espace : on passe à l'état jeu
         //~ if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
