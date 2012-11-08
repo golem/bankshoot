@@ -14,7 +14,7 @@ int main(void)
     ResourceManager::get_img("media/icone.bmp");
     std::cout << "OK !" << std::endl;
     
-    Engine game("Kikoo");
+    Engine game("Bank Shooter");
     game.add_state("Intro", new IntroState());
     game.add_state("Play", new PlayState());
     game.change_state(game.get_state("Play"));

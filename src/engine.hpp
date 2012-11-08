@@ -6,6 +6,8 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
+#include "constants.hpp"
+
 //~ #include "gamestate.hpp"
 // Forward declaration
 class GameState;
@@ -13,7 +15,7 @@ class GameState;
 class Engine
 {
     public:
-        Engine(const std::string& titre, int largeur=800, int hauteur=600) :
+        Engine(const std::string& titre, int largeur=SCREEN_WIDTH, int hauteur=SCREEN_HEIGHT) :
                      _running(true),
                      _fenetre(sf::VideoMode(largeur, hauteur, 32), titre,
                               sf::Style::Close, sf::WindowSettings()),
