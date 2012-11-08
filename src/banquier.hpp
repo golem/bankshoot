@@ -23,10 +23,11 @@ class Banquier: public CollidingObject
          * @param filename Le chemin de l'image à utiliser.
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 10.)
          **/
-        Banquier(const std::string& filename, int z=10) : CollidingObject(filename, z), _vx(200.0f), _vy(200.0f)
+        Banquier(const std::string& filename, int z=10) : CollidingObject(filename, z), _vx(400.0f), _vy(400.0f),
+                                                          _masque_face(0, 0, 31, 43), _masque_dos(32, 0, 63, 43)
         {
-           //TODO: Vitesses et position arbitraires, sûrement à changer, plus tard 
-           _sprite.SetSubRect(sf::IntRect(32, 43, 63, 0));
+           //TODO: Vitesses et position arbitraires, sûrement à changer, plus tard
+           _sprite.SetSubRect(_masque_dos);
            _sprite.SetPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
         }
         
@@ -43,6 +44,7 @@ class Banquier: public CollidingObject
     private:
         float _vx;
         float _vy;
+        const sf::IntRect _masque_face, _masque_dos; ///< Masques pour extraire le bon sprite de la sprite sheet
 };
 
 #endif /* BANQUIER_HPP */ 

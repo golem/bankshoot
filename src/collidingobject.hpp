@@ -62,6 +62,12 @@ class CollidingObject : public VisibleObject
          * @return void
          **/
         virtual void collision(CollidingObject * o) = 0;
+        
+        // Pour dessiner la hitbox, je le laisse là, ça peut aider pour le debug...
+        //~ void draw(sf::RenderWindow& fen) const {
+            //~ VisibleObject::draw(fen);
+            //~ fen.Draw(sf::Shape::Rectangle(get_rect().Left, get_rect().Top, get_rect().Right, get_rect().Bottom, sf::Color::Yellow));
+        //~ }
 };
 
 #endif /* COLLIDINGOBJECT_HPP */ 
