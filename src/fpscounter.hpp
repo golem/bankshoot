@@ -1,14 +1,30 @@
 #ifndef FPSCOUNTER_HPP
 #define FPSCOUNTER_HPP
 
+/**
+ * @file fpscounter.hpp
+ * @brief Affichage de la fréquence de rafraichissement.
+ */
+
 #include <string>
 #include <sstream>
 
 #include "visibleobject.hpp"
 
+/**
+ * @brief Objet permettant d'afficher le nombre d'images par seconde de l'application.
+ **/
 class FPSCounter: public VisibleObject
 {
     public:
+        /**
+         * @brief Constructeur.
+         *
+         * @param filename Chemin vers la police à utiliser.
+         * 
+         * Ce constructeur place le niveau Z de l'objet à une valeur assez haute
+         * pour être au dessus de tous les autres objets.
+         **/
         FPSCounter(const std::string& filename) : VisibleObject(50),
                             _font(ResourceManager::get_font(filename))
         {
@@ -19,8 +35,13 @@ class FPSCounter: public VisibleObject
         void update(const sf::RenderWindow& fen);
             
     private:
+        /**
+         * @brief Police utilisée pour afficher la fréquence de rafraichissement.
+         * 
+         * C'est un pointeur vers un objet géré par le ResourceManager.
+         **/
         sf::Font * _font;
-        sf::String _texte;
+        sf::String _texte; ///< Texte à afficher.
 };
 
 #endif /* FPSCOUNTER_HPP */ 
