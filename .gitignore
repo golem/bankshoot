@@ -2,3 +2,7 @@
 *.o
 bankshoot
 .depend
+# Le dossier dans lequel la documentation est générée, pas besoin d'envoyer ça sur le dépôt.
+doc
+# Les fichiers relatifs à KDevelop, pas besoin de polluer le dépôt avec ça.
+*.kdev*

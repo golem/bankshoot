@@ -44,7 +44,8 @@ class Banquier: public CollidingObject
     private:
         float _vx;
         float _vy;
-        const sf::IntRect _masque_face, _masque_dos; ///< Masques pour extraire le bon sprite de la sprite sheet
+        const sf::IntRect _masque_face; ///< Masque pour extraire le bon sprite de la sprite sheet.
+        const sf::IntRect _masque_dos; ///< Masque pour extraire le bon sprite de la sprite sheet.
 };
 
 #endif /* BANQUIER_HPP */ 

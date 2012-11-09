@@ -46,8 +46,8 @@ class FPSCounter: public VisibleObject
          **/
         sf::Font * _font;
         sf::String _texte; ///< Texte à afficher.
-        float _elapsed_time;
-        int _nb_images;
+        float _elapsed_time; ///< Le temps écoulé depuis la dernière mise à jour de l'affichage du compteur.
+        int _nb_images; ///< Le nombre d'images dessinées depuis la dernière mise à jour de l'affichage du compteur.
 };
 
 #endif /* FPSCOUNTER_HPP */ 
