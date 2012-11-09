@@ -33,7 +33,7 @@ class Engine
                      _running(true),
                      _fenetre(sf::VideoMode(largeur, hauteur, 32), titre,
                               sf::Style::Close, sf::WindowSettings()),
-                     _states(0), _map_states() { _fenetre.UseVerticalSync(false); }
+                     _states(0), _map_states() { _fenetre.SetFramerateLimit(FRAMERATE_LIMIT); }
         
         /**
          * @brief Destructeur.
