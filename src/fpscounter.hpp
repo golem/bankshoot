@@ -36,7 +36,7 @@ class FPSCounter: public VisibleObject
         }
         
         void draw(sf::RenderWindow& fen) const;
-        void update(const sf::RenderWindow& fen);
+        void * update(const sf::RenderWindow& fen);
             
     private:
         /**

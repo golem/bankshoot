@@ -37,7 +37,7 @@ class Banquier: public CollidingObject
          * @param fen La fenêtre de rendu.
          * @return void
          **/
-        void update(const sf::RenderWindow& fen);
+        void * update(const sf::RenderWindow& fen);
         
         void collision(CollidingObject * o);
         

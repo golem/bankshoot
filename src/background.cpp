@@ -1,6 +1,6 @@
 #include "background.hpp"
 
-void Background::update(const sf::RenderWindow& fen)
+void* Background::update(const sf::RenderWindow& fen)
 {
     float dt = fen.GetFrameTime();
     _position[0] += dt*_vitesse;
@@ -9,6 +9,8 @@ void Background::update(const sf::RenderWindow& fen)
     if (_position[1] >= (int) _img->GetHeight()) _position[1] = 0.0f;
     _sprite.SetPosition(0, _position[0]);
     _sprite_bis.SetPosition(0, _position[1]);
+    
+    return NULL;
 }
 
 void Background::draw(sf::RenderWindow& fen) const

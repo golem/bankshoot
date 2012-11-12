@@ -33,7 +33,7 @@ class Voleur: public Enemy
          * @param fen Fenêtre de rendu.
          * @return void
          **/
-        void update(const sf::RenderWindow& fen);
+        void * update(const sf::RenderWindow& fen);
 };
 
 #endif /* VOLEUR_HPP */ 

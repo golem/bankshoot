@@ -1,6 +1,6 @@
 #include "banquier.hpp"
 
-void Banquier::update(const sf::RenderWindow& fen)
+void* Banquier::update(const sf::RenderWindow& fen)
 {
     const sf::Input& input = fen.GetInput();
     float dt = fen.GetFrameTime();
@@ -26,6 +26,8 @@ void Banquier::update(const sf::RenderWindow& fen)
     if (pos.x >= fen.GetWidth() - size.x) pos.x = fen.GetWidth() - size.x;
     if (pos.y >= fen.GetHeight() - size.y) pos.y = fen.GetHeight() - size.y;
     _sprite.SetPosition(pos);
+    
+    return NULL;
 }
 
 void Banquier::collision(CollidingObject * o)

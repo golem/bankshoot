@@ -29,7 +29,7 @@ class Background: public VisibleObject
             _position[1] = 0.0f;
         }
         
-        void update(const sf::RenderWindow& fen);
+        void * update(const sf::RenderWindow& fen);
         void draw(sf::RenderWindow& fen) const;
             
     private:

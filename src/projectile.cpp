@@ -1,6 +1,6 @@
 #include "projectile.hpp"
 
-void Projectile::update(const sf::RenderWindow& fen)
+void* Projectile::update(const sf::RenderWindow& fen)
 {
     float dt = fen.GetFrameTime();
     // Tirer en ligne droite... trop simpliste ??
@@ -12,4 +12,6 @@ void Projectile::update(const sf::RenderWindow& fen)
     if ((pos.y > fen.GetHeight()) || (pos.y < 0) ) {
         _die(); // le projectile est détruit
     }
+    
+    return NULL;
 }

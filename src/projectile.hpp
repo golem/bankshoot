@@ -37,7 +37,7 @@ class Projectile: public VisibleObject
          /**
           * @brief Mettre à jour la position
           */
-        void update(const sf::RenderWindow& fen);
+        void * update(const sf::RenderWindow& fen);
         
     private:
         float _vy; /**< Vitesse suivant l'ordonné */

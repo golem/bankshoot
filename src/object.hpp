@@ -34,9 +34,10 @@ class Object
          * à jour sa position en fonction du temps écoulé depuis la dernière fois).
          *
          * @param fen Fenêtre de rendu à laquelle appartient l'objet.
-         * @return void
+         * @return void* : Pointeur vers un nouvel élément à éventuellement ajouter à la
+         * liste des objets (comme un projectile...)
          **/
-        virtual void update(const sf::RenderWindow& fen) = 0;
+        virtual void * update(const sf::RenderWindow& fen) = 0;
 
         /**
          * @brief Compare deux objets en fonction de leur hauteur.

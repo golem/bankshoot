@@ -48,7 +48,6 @@ class VisibleObject : public Object
          * @return void
          **/
         virtual void draw(sf::RenderWindow& fen) const;
-        virtual void update(const sf::RenderWindow& fen) = 0;
     
     protected:
         /**

@@ -21,7 +21,7 @@ class Enemy: public CollidingObject
          **/
         virtual ~Enemy() { }
             
-        virtual void update(const sf::RenderWindow& fen);
+        virtual void * update(const sf::RenderWindow& fen);
 
 // Les 3 méthodes suivantes sont peut-être mieux de les déclarer dans la super classe        
 
