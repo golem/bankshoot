@@ -7,6 +7,9 @@
  */
 
 #include "visibleobject.hpp"
+#include "constants.hpp"
+
+enum background_side {center, right, left};
 
 /**
  * @brief Classe permettant d'avoir une image de fond défilante (ou non).
@@ -22,20 +25,27 @@ class Background: public VisibleObject
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à -1,
          * pour être sûr que le fond est bien dessiné avant les autres objets.)
          **/
-        Background(const std::string& filename, int vitesse, int z=-1) : VisibleObject(filename, z), _vitesse(vitesse)
+        Background(const std::string& filename, int vitesse, int z=-2, background_side side=center):
+            VisibleObject(filename, z), _vitesse(vitesse), _side(side)
         {
             _sprite_bis.SetImage(*_img);
-            _position[0] = -(float) _img->GetHeight();
+
+            //~ _position[0] = -(float) _img->GetHeight();
+            //~ _position[1] = 0.0f;
+
+            _position[0] = -(float) SCREEN_HEIGHT/2;
             _position[1] = 0.0f;
+
         }
-        
-        void update(const sf::RenderWindow& fen);
+
+        virtual void update(const sf::RenderWindow& fen);
         void draw(sf::RenderWindow& fen) const;
-            
-    private:
+
+    protected:
         int _vitesse; ///< Vitesse à laquelle le fond défile.
         sf::Sprite _sprite_bis; ///< Deuxième vue sur l'image.
         float _position[2]; ///< Tableau retenant la position des deux sprites.
+        background_side _side;
 };
 
 #endif /* REPEATINGOBJECT_HPP */ 
