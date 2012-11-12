@@ -16,8 +16,13 @@ void ObjectManager::draw_all(sf::RenderWindow& fen) const
 
 void ObjectManager::update_all(const sf::RenderWindow& fen)
 {
+    void * new_obj;
+    
     for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ++it) {
-        (*it)->update(fen);
+        new_obj = (*it)->update(fen);
+        if (new_obj != NULL) {
+            _added_objs.push_back((Object *) new_obj);
+        }
     }
     // Une autre boucle pour gérer les collisions
     // Pourrait peut-être être amélioré
@@ -39,6 +44,13 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
         }
         else ++it;
     }
+    // Encore une boucle pour gérer les objets ajoutés.
+    // On les ajoute après avoir géré ceux qui étaient déjà présents pour éviter
+    // des comportements bizarres...
+    for (std::vector<Object*>::iterator it = _added_objs.begin() ; it != _added_objs.end(); ++it) {
+        _objects.insert(*it);
+    }
+    _added_objs.clear();
 }
 
 void ObjectManager::delete_all()

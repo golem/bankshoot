@@ -10,6 +10,7 @@
 #include "constants.hpp"
 #include "collidingobject.hpp"
 #include "enemy.hpp"
+#include "projectile.hpp"
 
 /**
  * @brief Le personnage principal : un banquier qui défend la banque.

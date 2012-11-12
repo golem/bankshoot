@@ -27,6 +27,11 @@ void* Banquier::update(const sf::RenderWindow& fen)
     if (pos.y >= fen.GetHeight() - size.y) pos.y = fen.GetHeight() - size.y;
     _sprite.SetPosition(pos);
     
+    // Création éventuelle d'un projectile
+    if (input.IsKeyDown(sf::Key::Space)) {
+        return new Projectile("media/gold.png", pos.x, pos.y);
+    }
+    
     return NULL;
 }
 

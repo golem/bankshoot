@@ -7,6 +7,7 @@
  */
 
 #include <set>
+#include <vector>
 #include <SFML/Graphics.hpp>
 
 #include "visibleobject.hpp"
@@ -86,6 +87,7 @@ class ObjectManager
     
     private:
         ObjList _objects; ///< Liste des objets.
+        std::vector<Object *> _added_objs;
 };
 
 #endif /* OBJECTMANAGER_HPP */ 
