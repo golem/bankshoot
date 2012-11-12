@@ -7,6 +7,9 @@ void PlayState::init()
     _objects += new Banquier("./media/sprite_banquier.png");
     _objects += new Voleur("./media/icone.bmp");
     _objects += new Background("./media/background_test.png", 100);
+    _objects += new Background("./media/mur.png", 50, -1, left);
+    _objects += new Background("./media/mur2.png", 50, -1, right);
+    
     _objects += new FPSCounter("./media/BOWSHADW.ttf");
 }
 
