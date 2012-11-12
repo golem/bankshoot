@@ -9,8 +9,6 @@
 #include "enemy.hpp"
 
 #include <SFML/System/Clock.hpp>
-#include <cstdlib>
-#include <ctime>
 
 /**
  * @class EnemyFactory
@@ -34,11 +32,7 @@ class EnemyFactory
         /**
          * @brief Constructeur
          */
-        EnemyFactory()
-        {
-            srand(time(NULL));
-            _clock.Reset();
-        }
+        EnemyFactory() { _clock.Reset(); }
         
         /**
          * @brief Destructeur
