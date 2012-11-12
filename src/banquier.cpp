@@ -4,6 +4,7 @@ void* Banquier::update(const sf::RenderWindow& fen)
 {
     const sf::Input& input = fen.GetInput();
     float dt = fen.GetFrameTime();
+    _last_shot += dt;
     sf::Vector2f size = _sprite.GetSize();
     sf::Vector2f pos;
     
@@ -13,10 +14,12 @@ void* Banquier::update(const sf::RenderWindow& fen)
     if (input.IsKeyDown(sf::Key::Up)) {
         _sprite.Move(0, -dt*_vy);
         _sprite.SetSubRect(_masque_dos);
+        _facing_up = true;
     }
     if (input.IsKeyDown(sf::Key::Down)) {
         _sprite.Move(0, dt*_vy);
         _sprite.SetSubRect(_masque_face);
+        _facing_up = false;
     }
     
     // Gestion des bords
@@ -28,8 +31,12 @@ void* Banquier::update(const sf::RenderWindow& fen)
     _sprite.SetPosition(pos);
     
     // Création éventuelle d'un projectile
-    if (input.IsKeyDown(sf::Key::Space)) {
-        return new Projectile("media/gold.png", pos.x, pos.y);
+    if ((_last_shot > _shot_delay) && (input.IsKeyDown(sf::Key::Space))) {
+        _last_shot = 0.0f;
+        if (_facing_up)
+            return new Projectile("media/gold.png", pos.x, pos.y);
+        else 
+            return new Projectile("media/gold.png", pos.x, pos.y, 200.0f);
     }
     
     return NULL;

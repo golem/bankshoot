@@ -24,9 +24,10 @@ class Projectile: public CollidingObject
          * 
          * Appelle le constructeur de \a CollidingObject
          */
-        Projectile(const std::string& filename, float x, float y, int vy=-200.0f):
+        Projectile(const std::string& filename, float x, float y, float vy=-200.0f):
             CollidingObject(filename, 20), _vy(vy)
         {
+            // TODO: Réfléchir à améliorer ce constructeur (vitesse +/-, position par rapport au créateur, etc.)
            _sprite.SetPosition(x, y);
         }
 
