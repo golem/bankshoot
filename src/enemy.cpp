@@ -18,8 +18,14 @@ void* Enemy::update(const sf::RenderWindow& fen)
 
 void Enemy::collision(CollidingObject * o)
 {
-    Banquier * autre = dynamic_cast<Banquier*>(o);
+    void * autre = dynamic_cast<Banquier*>(o);
     if (autre != NULL) {
         _die();
+        return;
+    }
+    autre = dynamic_cast<Projectile*>(o);
+    if (autre != NULL) {
+        _die();
+        return;
     }
 }

@@ -6,7 +6,7 @@ void* Projectile::update(const sf::RenderWindow& fen)
     // Tirer en ligne droite... trop simpliste ??
     _sprite.Move(0.0f, _vy*dt);
     
-    sf::Vector2f size = _sprite.GetSize();
+//     sf::Vector2f size = _sprite.GetSize();
     sf::Vector2f pos = _sprite.GetPosition();
     
     if ((pos.y > fen.GetHeight()) || (pos.y < 0) ) {
@@ -14,4 +14,12 @@ void* Projectile::update(const sf::RenderWindow& fen)
     }
     
     return NULL;
+}
+
+void Projectile::collision(CollidingObject * o)
+{
+    Enemy * autre = dynamic_cast<Enemy*>(o);
+    if (autre != NULL) {
+        _die();
+    }
 }

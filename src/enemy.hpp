@@ -8,6 +8,7 @@
 
 #include "collidingobject.hpp"
 #include "banquier.hpp"
+#include "projectile.hpp"
 
 /**
  * @brief Classe de base de tous les ennemis du jeu.
