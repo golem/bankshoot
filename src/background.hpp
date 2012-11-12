@@ -39,6 +39,9 @@ class Background: public VisibleObject
         }
 
         virtual void update(const sf::RenderWindow& fen);
+        
+        void * update(const sf::RenderWindow& fen);
+
         void draw(sf::RenderWindow& fen) const;
 
     protected:

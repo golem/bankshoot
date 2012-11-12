@@ -6,7 +6,8 @@
  * @brief Gestion des projectiles
  */
 
-#include "visibleobject.hpp"
+#include "collidingobject.hpp"
+#include "enemy.hpp"
 
 #include <string>
 
@@ -14,18 +15,19 @@
  * @class Projectile
  * @brief Gérer les objets lancés par les personnages
  */
-class Projectile: public VisibleObject
+class Projectile: public CollidingObject
 {
     public:
 
         /**
          * @brief Constructeur
          * 
-         * Appelle le constructeur de \a VisibleObject
+         * Appelle le constructeur de \a CollidingObject
          */
-        Projectile(const std::string& filename, float x, float y, int vy=-200.0f):
-            VisibleObject(filename, 20), _vy(vy)
+        Projectile(const std::string& filename, float x, float y, float vy=-200.0f):
+            CollidingObject(filename, 20), _vy(vy)
         {
+            // TODO: Réfléchir à améliorer ce constructeur (vitesse +/-, position par rapport au créateur, etc.)
            _sprite.SetPosition(x, y);
         }
 
@@ -37,7 +39,9 @@ class Projectile: public VisibleObject
          /**
           * @brief Mettre à jour la position
           */
-        void update(const sf::RenderWindow& fen);
+        void * update(const sf::RenderWindow& fen);
+        
+        virtual void collision(CollidingObject * o);
         
     private:
         float _vy; /**< Vitesse suivant l'ordonné */

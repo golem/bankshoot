@@ -1,10 +1,14 @@
 #ifndef INTROSTATE_HPP
 #define INTROSTATE_HPP
 
+/**
+ * @file introstate.hpp
+ * @brief Introduction du jeu.
+ */
+
 #include "gamestate.hpp"
 #include "background.hpp"
 #include "objectmanager.hpp"
-//~ #include <SFML/Graphics.hpp>
 
 class IntroState: public GameState
 {

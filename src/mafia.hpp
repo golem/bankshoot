@@ -14,7 +14,7 @@ class Mafia: public Enemy
             _vy = 200.0f;
         }
         
-        void update(const sf::RenderWindow& fen);
+        void * update(const sf::RenderWindow& fen);
 };
 
 #endif

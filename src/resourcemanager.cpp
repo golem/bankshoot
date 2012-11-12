@@ -4,7 +4,7 @@
 ImgMap ResourceManager::_imgs;
 FontMap ResourceManager::_fonts;
 
-// ... Je verrais bien des templates par ici...
+// ... Je verrais bien des templates par ici... (ou pas)
 
 sf::Image * ResourceManager::get_img(const std::string& filename)
 {

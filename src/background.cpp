@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-void Background::update(const sf::RenderWindow& fen)
+void* Background::update(const sf::RenderWindow& fen)
 {
     float dt = fen.GetFrameTime();
     _position[0] += dt*_vitesse;
@@ -31,7 +31,8 @@ void Background::update(const sf::RenderWindow& fen)
         _sprite.SetPosition(_position[0]+2*SCREEN_WIDTH/3, 2*_position[0]);
         _sprite_bis.SetPosition(_position[1]+2*SCREEN_WIDTH/3, 2*_position[1]);        
     }
-
+    
+    return NULL;
 }
 
 void Background::draw(sf::RenderWindow& fen) const

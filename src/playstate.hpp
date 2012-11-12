@@ -1,6 +1,11 @@
 #ifndef PLAYSTATE_HPP
 #define PLAYSTATE_HPP
 
+/**
+ * @file playstate.hpp
+ * @brief État principal du jeu.
+ */
+
 #include "gamestate.hpp"
 #include "background.hpp"
 #include "objectmanager.hpp"

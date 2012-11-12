@@ -14,7 +14,7 @@ void FPSCounter::draw(sf::RenderWindow& fen) const
     //~ os << freq;
     //~ _texte.SetText(os.str());
 //~ }
-void FPSCounter::update(const sf::RenderWindow& fen)
+void* FPSCounter::update(const sf::RenderWindow& fen)
 {
     _elapsed_time += fen.GetFrameTime();
     // Moyennage : toutes les secondes, on affiche le nombre de frames calculées
@@ -27,4 +27,6 @@ void FPSCounter::update(const sf::RenderWindow& fen)
         _nb_images = 0;
     }
     else ++_nb_images;
+    
+    return NULL;
 }
