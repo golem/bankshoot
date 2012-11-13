@@ -9,14 +9,15 @@
 #include "visibleobject.hpp"
 #include "constants.hpp"
 
-enum background_side {center, right, left};
-
 /**
  * @brief Classe permettant d'avoir une image de fond défilante (ou non).
  **/
 class Background: public VisibleObject
 {
     public:
+
+        enum background_side {center, right, left};
+
         /**
          * @brief Constructeur permettant de définir la vitesse de défilement du fond.
          *

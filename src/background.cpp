@@ -1,6 +1,4 @@
 #include "background.hpp"
-#include <iostream>
-
 
 void* Background::update(const sf::RenderWindow& fen)
 {
@@ -40,6 +38,3 @@ void Background::draw(sf::RenderWindow& fen) const
     fen.Draw(_sprite);
     fen.Draw(_sprite_bis);
 }
-
-
-
