@@ -11,7 +11,9 @@
 #include "objectmanager.hpp"
 #include "banquier.hpp"
 #include "voleur.hpp"
+#include "dropobject.hpp"
 #include "fpscounter.hpp"
+#include "scoredisplay.hpp"
 #include "enemyfactory.hpp"
 #include <SFML/Graphics.hpp>
 
