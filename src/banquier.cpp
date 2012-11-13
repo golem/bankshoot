@@ -32,6 +32,7 @@ void* Banquier::update(const sf::RenderWindow& fen)
     
     // Création éventuelle d'un projectile
     if ((_last_shot > _shot_delay) && (input.IsKeyDown(sf::Key::Space))) {
+        --_score; // Baisser le score
         _last_shot = 0.0f;
         if (_facing_up)
             return new Projectile("media/gold.png", pos.x, pos.y);
@@ -42,10 +43,12 @@ void* Banquier::update(const sf::RenderWindow& fen)
     return NULL;
 }
 
-void Banquier::collision(CollidingObject * o)
+void* Banquier::collision(CollidingObject * o)
 {
     Enemy * autre = dynamic_cast<Enemy*>(o);
     if (autre != NULL) {
+        --_score;
         std::cout << "Meurs !" << std::endl;
     }
+    return NULL;
 }

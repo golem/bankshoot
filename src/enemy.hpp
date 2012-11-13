@@ -9,6 +9,7 @@
 #include "collidingobject.hpp"
 #include "banquier.hpp"
 #include "projectile.hpp"
+#include "dropobject.hpp"
 
 /**
  * @brief Classe de base de tous les ennemis du jeu.
@@ -51,7 +52,7 @@ class Enemy: public CollidingObject
          * @param o Le CollidingObject avec lequel il y a eu collision.
          * @return void
          **/
-        virtual void collision(CollidingObject * o);
+        virtual void* collision(CollidingObject * o);
         
     protected:
         /**

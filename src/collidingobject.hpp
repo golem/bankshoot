@@ -61,7 +61,7 @@ class CollidingObject : public VisibleObject
          * @param o L'objet avec lequel il y a collision.
          * @return void
          **/
-        virtual void collision(CollidingObject * o) = 0;
+        virtual void* collision(CollidingObject * o) = 0;
         
         // Pour dessiner la hitbox, je le laisse là, ça peut aider pour le debug...
         //~ void draw(sf::RenderWindow& fen) const {

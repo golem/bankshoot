@@ -16,10 +16,11 @@ void* Projectile::update(const sf::RenderWindow& fen)
     return NULL;
 }
 
-void Projectile::collision(CollidingObject * o)
+void* Projectile::collision(CollidingObject * o)
 {
     Enemy * autre = dynamic_cast<Enemy*>(o);
     if (autre != NULL) {
         _die();
     }
+    return NULL;
 }

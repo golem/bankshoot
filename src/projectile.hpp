@@ -41,7 +41,7 @@ class Projectile: public CollidingObject
           */
         void * update(const sf::RenderWindow& fen);
         
-        virtual void collision(CollidingObject * o);
+        virtual void * collision(CollidingObject * o);
         
     private:
         float _vy; /**< Vitesse suivant l'ordonné */

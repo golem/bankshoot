@@ -16,16 +16,17 @@ void* Enemy::update(const sf::RenderWindow& fen)
     return NULL;
 }
 
-void Enemy::collision(CollidingObject * o)
+void* Enemy::collision(CollidingObject * o)
 {
     void * autre = dynamic_cast<Banquier*>(o);
     if (autre != NULL) {
         _die();
-        return;
+        return NULL;
     }
     autre = dynamic_cast<Projectile*>(o);
     if (autre != NULL) {
         _die();
-        return;
+        return new DropObject(_sprite.GetPosition(), 5);
     }
+    return NULL;
 }
