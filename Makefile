@@ -1,5 +1,6 @@
 # Si clang est installé, on compile avec, c'est mieux.
-ifeq ($(shell if command -v clang &>/dev/null ; then echo ok; fi), ok)
+CLANG_EXISTS := $(shell command -v clang >/dev/null 2>&1 && echo ok)
+ifeq ($(CLANG_EXISTS), ok)
  CXX=clang++
 else
  CXX=g++
