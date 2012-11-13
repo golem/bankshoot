@@ -11,6 +11,8 @@ const int FRAMERATE_LIMIT = 0; /**< Nombre maximum d'images par seconde (+1... ?
 const int SCREEN_WIDTH = 800; /**< Largeur de la fenêtre */
 const int SCREEN_HEIGHT = 600; /**< Hauteur de la fenêtre */
 
+const int INITIAL_SCORE = 100;
+
 const int PROPA_MAFIA = 40;
 const float NEXT_ENEMY_TIME = 2.0f;
 
