@@ -31,7 +31,12 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
         if (obj != NULL) {
             for (ObjList::iterator it2 = _objects.begin(); it2 != _objects.end(); ++it2) {
                 CollidingObject * autre = dynamic_cast<CollidingObject*>(*it2);
-                if ((autre != NULL) && (obj != autre) && (obj->collides_with(*autre))) obj->collision(autre);
+                if ((autre != NULL) && (obj != autre) && (obj->collides_with(*autre))) {
+                    new_obj = obj->collision(autre);
+                    if (new_obj != NULL) {
+                        _added_objs.push_back((Object *) new_obj);
+                    }
+                }
             }
         }
     }
