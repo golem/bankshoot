@@ -1,4 +1,9 @@
-CC=g++
+# Si clang est installé, on compile avec, c'est mieux.
+ifeq ($(shell if command -v clang &>/dev/null ; then echo ok; fi), ok)
+ CXX=clang++
+else
+ CXX=g++
+endif
 
 # La directive -isystem <dir> permet de signaler à g++ que ce dossier contient
 # des headers qui ne seront pas modifiés (on ne les prend pas en compte dans 
@@ -30,17 +35,17 @@ depend: .depend
 
 .depend: $(SRC)
 	rm -f ./.depend
-	$(CC) $(CFLAGS) -MM $^ >./.depend;
+	$(CXX) $(CFLAGS) -MM $^ >./.depend;
 	@# Hack un peu sale pour rajouter des 'src/' où il faut dans le .depend
 	sed -i 's/[a-zA-Z0-9]*\.o/src\/&/' .depend
 
 -include .depend
 
 bankshoot: $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CXX) -o $@ -c $< $(CFLAGS)
 
 .PHONY: clean mrproper
 
