@@ -9,6 +9,10 @@
 
 #include "banquier.hpp"
 
+
+/**
+ * @class ScoreDisplay
+ */
 class ScoreDisplay: public VisibleObject {
     public:
         ScoreDisplay(const std::string& filename, Banquier *banquier):
@@ -28,9 +32,9 @@ class ScoreDisplay: public VisibleObject {
 
 
     private:
-        Banquier *_banquier;
-        sf::Font *_font;
-        sf::String _text;
+        Banquier *_banquier; ///< Pointeur sur le banquier
+        sf::Font *_font; ///< Font du texte
+        sf::String _text; ///< Texte à afficher
 
 };
 
