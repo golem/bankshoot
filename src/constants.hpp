@@ -16,4 +16,6 @@ const int INITIAL_SCORE = 100;
 const int PROPA_MAFIA = 40;
 const float NEXT_ENEMY_TIME = 2.0f;
 
+const float TIME_TO_LIVE = 1.0f;
+
 #endif

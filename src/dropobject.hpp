@@ -7,6 +7,7 @@
 
 #include "collidingobject.hpp"
 #include "banquier.hpp"
+#include "constants.hpp"
 
 
 /**
@@ -29,10 +30,11 @@ class DropObject: public CollidingObject
          * @param montant Initialise le montant
          **/
         DropObject(sf::Vector2f pos, unsigned int montant=2):
-                    CollidingObject("./media/sac.png", 0), _montant(montant)
+                    CollidingObject("./media/sac_dollar.png", 0), _montant(montant)
         {
             _vy = 50.0f;
-            _clock.Reset();
+            //~ _clock.Reset();
+            _time = TIME_TO_LIVE;
             _sprite.SetPosition(pos);
         }
 
@@ -47,8 +49,9 @@ class DropObject: public CollidingObject
 
     private:
         unsigned int _montant; ///< Montant
-        sf::Clock _clock; ///< Pour régler la temporisation
+//        sf::Clock _clock; ///< Pour régler la temporisation
         float _vy; ///< Vitesse de déplacement
+        float _time;
 };
 
 #endif

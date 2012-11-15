@@ -19,7 +19,9 @@ void * DropObject::update(const sf::RenderWindow& fen)
 {
     float dt = fen.GetFrameTime();
 
-    if (_clock.GetElapsedTime() > 1.0f) _sprite.Move(0.0f, _vy*dt);
+    _time -= dt;
+
+    if (_time < 0) _sprite.Move(0.0f, _vy*dt);
 
     return NULL;
 }
