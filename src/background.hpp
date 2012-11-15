@@ -34,7 +34,7 @@ class Background: public VisibleObject
             //~ _position[0] = -(float) _img->GetHeight();
             //~ _position[1] = 0.0f;
 
-            _position[0] = -(float) SCREEN_HEIGHT/2;
+            _position[0] = -(float) SCREEN_HEIGHT;
             _position[1] = 0.0f;
 
         }
