@@ -10,11 +10,11 @@ Enemy* EnemyFactory::generate() const
     Enemy_type type = random_type();
 
     if (type == thief) {
-        enemy = new Voleur("./media/voleur.png");
+        enemy = new Voleur("media/voleur.png");
         //~ enemy->set_position(rand() % (int) (SCREEN_WIDTH - enemy->get_size().x), 0);
     }
     else if (type == mafia) {
-        enemy = new Mafia("./media/mafia.png");
+        enemy = new Mafia("media/mafia.png");
         //~ enemy->set_position(rand() % (int) (SCREEN_WIDTH - enemy->get_size().x), 0);
     }
 

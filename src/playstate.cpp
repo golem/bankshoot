@@ -5,14 +5,14 @@ void PlayState::init()
     //~ _bg.LoadFromFile("./media/icone.bmp");
     //~ _bg_sprite.SetImage(_bg);
     //~ _objects += new Banquier("./media/sprite_banquier.png");
-    Banquier *banquier = new Banquier("./media/sprite_banquier.png");
+    Banquier *banquier = new Banquier("media/sprite_banquier.png");
     _objects += banquier;
-    _objects += new Background("./media/background_floor.png", 100);
-    _objects += new Background("./media/background_left.png", 50, -1, Background::left);
-    _objects += new Background("./media/background_right.png", 50, -1, Background::right);
+    _objects += new Background("media/background_floor.png", 100);
+    _objects += new Background("media/background_left.png", 50, -1, Background::left);
+    _objects += new Background("media/background_right.png", 50, -1, Background::right);
     
-    _objects += new FPSCounter("./media/BOWSHADW.ttf");
-    _objects += new ScoreDisplay("./media/Vera.ttf", banquier);
+    _objects += new FPSCounter("media/BOWSHADW.ttf");
+    _objects += new ScoreDisplay("media/Vera.ttf", banquier);
 }
 
 void PlayState::cleanup()

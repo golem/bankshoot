@@ -9,9 +9,15 @@ int main(void)
 {
     std::cout << "Hello world!" << std::endl;
     std::cout << "Chargement des images... ";
-    ResourceManager::get_img("media/background.bmp");
-    ResourceManager::get_img("media/background_test.png");
-    ResourceManager::get_img("media/icone.bmp");
+    // Attention à bien charger les images avec le même chemin (sans commencer par "./")
+    ResourceManager::get_img("media/background_floor.png");
+    ResourceManager::get_img("media/background_left.png");
+    ResourceManager::get_img("media/background_right.png");
+    ResourceManager::get_img("media/sprite_banquier.png");
+    ResourceManager::get_img("media/voleur.png");
+    ResourceManager::get_img("media/mafia.png");
+    ResourceManager::get_img("media/gold.png");
+    ResourceManager::get_img("media/sac_dollar.png");
     std::cout << "OK !" << std::endl;
     
     Engine game("Bank Shooter");
