@@ -32,9 +32,9 @@ class DropObject: public CollidingObject
         DropObject(sf::Vector2f pos, unsigned int montant=2):
                     CollidingObject("./media/sac_dollar.png", 0), _montant(montant)
         {
-            _vy = 50.0f;
+            _vy = BAG_SPEED;
             //~ _clock.Reset();
-            _time = TIME_TO_LIVE;
+            _time = BAG_TIME_TO_LIVE;
             _sprite.SetPosition(pos);
         }
 

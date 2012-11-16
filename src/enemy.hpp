@@ -10,6 +10,7 @@
 #include "banquier.hpp"
 #include "projectile.hpp"
 #include "dropobject.hpp"
+#include "constants.hpp"
 
 /**
  * @brief Classe de base de tous les ennemis du jeu.

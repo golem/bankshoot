@@ -37,7 +37,7 @@ void* Banquier::update(const sf::RenderWindow& fen)
         if (_facing_up)
             return new Projectile("media/gold.png", pos.x, pos.y);
         else 
-            return new Projectile("media/gold.png", pos.x, pos.y, 200.0f);
+            return new Projectile("media/gold.png", pos.x, pos.y, BANKER_SHOT_SPEED);
     }
     
     return NULL;

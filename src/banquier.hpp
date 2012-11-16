@@ -24,9 +24,9 @@ class Banquier: public CollidingObject
          * @param filename Le chemin de l'image à utiliser.
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 10.)
          **/
-        Banquier(const std::string& filename, int z=10) : CollidingObject(filename, z), _vx(400.0f), _vy(400.0f),
+        Banquier(const std::string& filename, int z=10) : CollidingObject(filename, z), _vx(BANKER_SPEED), _vy(BANKER_SPEED),
                                                           _masque_face(0, 0, 31, 43), _masque_dos(32, 0, 63, 43),
-                                                          _facing_up(true), _last_shot(0.0f), _shot_delay(0.5f),
+                                                          _facing_up(true), _last_shot(0.0f), _shot_delay(BANKER_SHOT_DELAY),
                                                           _score(INITIAL_SCORE)
         {
            //TODO: Vitesses et position arbitraires, sûrement à changer, plus tard
