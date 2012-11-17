@@ -8,8 +8,8 @@
 
 const int FRAMERATE_LIMIT = 0; /**< Nombre maximum d'images par seconde (+1... ?). 0 pour désactiver la limite, 61 pour activer la VSYNC */
 
-const int SCREEN_WIDTH = 800; /**< Largeur de la fenêtre */
-const int SCREEN_HEIGHT = 600; /**< Hauteur de la fenêtre */
+const unsigned int SCREEN_WIDTH = 800; /**< Largeur de la fenêtre */
+const unsigned int SCREEN_HEIGHT = 600; /**< Hauteur de la fenêtre */
 
 const int INITIAL_SCORE = 100;
 

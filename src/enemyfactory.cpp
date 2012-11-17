@@ -6,7 +6,7 @@
 
 Enemy* EnemyFactory::generate() const
 {
-    Enemy *enemy;
+    Enemy *enemy = NULL;
 
     Enemy_type type = random_type();
 

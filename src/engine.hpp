@@ -29,7 +29,7 @@ class Engine
          * @param largeur Largeur de la fenêtre. (Valeur par défaut associée à SCREEN_WIDTH.)
          * @param hauteur Hauteur de la fenêtre. (Valeur par défaut associée à SCREEN_HEIGHT.)
          **/
-        Engine(const std::string& titre, int largeur=SCREEN_WIDTH, int hauteur=SCREEN_HEIGHT) :
+        Engine(const std::string& titre, unsigned int largeur=SCREEN_WIDTH, unsigned int hauteur=SCREEN_HEIGHT) :
                      _running(true),
                      _fenetre(sf::VideoMode(largeur, hauteur, 32), titre,
                               sf::Style::Close, sf::WindowSettings()),

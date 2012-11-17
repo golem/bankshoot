@@ -11,6 +11,10 @@ endif
 # la génération des dépendances).
 COMMON_CFLAGS=-W -Wall -isystem include/ -g
 
+# -Wall n'est pas DU TOUT exhaustif, donc -Weverything permet à clang de fournir des
+# warnings pour à peu près tout.
+#COMMON_CFLAGS=-W -Weverything -isystem include/ -g -Wno-padded -Wno-weak-vtables -Wno-global-constructors -Wno-exit-time-destructors -Werror
+
 # Le rpath permet d'encoder un chemin de recherche des librairies dans l'exécutable
 # pas besoin de changer LD_LIBRARY_PATH a priori, donc
 ifeq ($(shell getconf LONG_BIT),64)
