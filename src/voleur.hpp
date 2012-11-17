@@ -31,7 +31,7 @@ class Voleur: public Enemy
          * @brief Met à jour la position de l'ennemi suivant un mouvement linéaire uniforme. Très simple.
          *
          * @param fen Fenêtre de rendu.
-         * @return void
+         * @return void*
          **/
         void * update(const sf::RenderWindow& fen);
 };

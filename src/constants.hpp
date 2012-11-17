@@ -14,6 +14,7 @@ const int SCREEN_HEIGHT = 600; /**< Hauteur de la fenêtre */
 const int INITIAL_SCORE = 100;
 
 const int PROPA_MAFIA = 40;
+const int PROPA_CLIENT = 50;
 const float NEXT_ENEMY_TIME = 2.0f;
 
 // Paramètres des objets (TODO: Ces constantes peuvent être une base, à modifier de manière aléatoire par exemple)
@@ -27,5 +28,7 @@ const float BAG_SPEED = 50.0f; ///< Vitesse de chute des sacs d'argent.
 const float ENEMY_SPEED = 200.0f; ///< Vitesse de base des ennemis.
 const float THIEF_SPEED = 1*ENEMY_SPEED; ///< Vitesse des voleurs.
 const float MAFIA_SPEED = 1.2*ENEMY_SPEED; ///< Vitesse de la mafia.
+const float CLIENT_SPEED = 1*ENEMY_SPEED; ///< Vitesse des clients en colère.
+const float CLIENT_AMPLITUDE = ENEMY_SPEED; ///< Amplitude du mouvement sinusoidal des clients.
 
 #endif

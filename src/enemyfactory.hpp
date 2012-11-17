@@ -26,7 +26,8 @@ class EnemyFactory
          */
         enum Enemy_type {
             thief, /**< Ennemi du type \a Voleur*/
-            mafia
+            mafia,
+            client
         };
         
         /**
