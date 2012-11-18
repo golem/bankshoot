@@ -9,11 +9,15 @@
 #include "gamestate.hpp"
 #include "background.hpp"
 #include "objectmanager.hpp"
+#include "constants.hpp"
 
+/**
+ * @class IntroState
+ */
 class IntroState: public GameState
 {
     public:
-        IntroState() { }
+        IntroState(): _vr(10.f) { }
         ~IntroState() { }
         
         void init();
@@ -26,7 +30,11 @@ class IntroState: public GameState
     private:
         //~ sf::Image _bg;
         //~ sf::Sprite _bg_sprite;
-        ObjectManager _objects;
+        //~ ObjectManager _objects;
+
+/* On n'a pas forcement besoin de ObjectManager, puisqu'il n'y a qu'une image */
+        Background *_background;
+        float _vr; ///< vitesse angulaire
 };
 
 #endif /* INTROSTATE_HPP */ 

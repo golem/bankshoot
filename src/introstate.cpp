@@ -4,13 +4,17 @@ void IntroState::init()
 {
     //~ _bg.LoadFromFile("./media/background.bmp");
     //~ _bg_sprite.SetImage(_bg);
-    _objects += new Background("./media/background.bmp", 0);
-    _objects += new Background("./media/icone.bmp", 0);
+    _background = new Background("./media/intro_background.png", 0);
+
+    /* faire en sorte que le centre de rotation est en bas au milieu */
+    _background->set_center(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
+    //~ _objects += new Background("./media/icone.bmp", 0);
 }
 
 void IntroState::cleanup()
 {
-    _objects.delete_all();
+    //~ _objects.delete_all();
+    delete _background;
 }
 
 void IntroState::handle_events(Engine * game)
@@ -34,11 +38,16 @@ void IntroState::handle_events(Engine * game)
 
 void IntroState::update(Engine * game)
 {
-    _objects.update_all(game->get_screen());
+    //~ _objects.update_all(game->get_screen());
+    float dt = game->get_screen().GetFrameTime();
+
+    float angle = _vr * dt;
+    _background->rotation(angle);
 }
 
 void IntroState::draw(Engine * game) const
 {
     //~ game->get_screen().Draw(_bg_sprite);
-    _objects.draw_all(game->get_screen());
+    //~ _objects.draw_all(game->get_screen());
+    _background->draw(game->get_screen());
 }
