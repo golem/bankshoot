@@ -8,14 +8,14 @@
 
 const int FRAMERATE_LIMIT = 0; /**< Nombre maximum d'images par seconde (+1... ?). 0 pour désactiver la limite, 61 pour activer la VSYNC */
 
-const unsigned int SCREEN_WIDTH = 800; /**< Largeur de la fenêtre */
-const unsigned int SCREEN_HEIGHT = 600; /**< Hauteur de la fenêtre */
+const unsigned int SCREEN_WIDTH = 800; ///< Largeur de la fenêtre
+const unsigned int SCREEN_HEIGHT = 600; ///< Hauteur de la fenêtre
 
-const int INITIAL_SCORE = 100;
+const int INITIAL_SCORE = 100; ///< Score initial
 
-const int PROPA_MAFIA = 40;
-const int PROPA_CLIENT = 50;
-const float NEXT_ENEMY_TIME = 2.0f;
+const int PROPA_MAFIA = 40; ///< Probabilité d'apparition d'un ennemi du type \a Mafia
+const int PROPA_CLIENT = 50; ///< probabilité d'apparition d'un ennemi du type \a Client
+const float NEXT_ENEMY_TIME = 2.0f; ///< Durée entre deux apparitions d'ennemi
 
 // Paramètres des objets (TODO: Ces constantes peuvent être une base, à modifier de manière aléatoire par exemple)
 const float BANKER_SPEED = 400.0f; ///< Vitesse de déplacement du banquier.

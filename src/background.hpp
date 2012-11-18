@@ -33,8 +33,9 @@ class Background: public VisibleObject
          * @param vitesse Vitesse de défilement du fond.
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à -1,
          * pour être sûr que le fond est bien dessiné avant les autres objets.)
+         * @param side Position de l'image, par défaut placer l'image au centre
          **/
-        Background(const std::string& filename, int vitesse, int z=-2, background_side side=center):
+        Background(const std::string& filename, int vitesse, int z=-1, background_side side=center):
             VisibleObject(filename, z), _vitesse(vitesse), _side(side)
         {
             _sprite_bis.SetImage(*_img);

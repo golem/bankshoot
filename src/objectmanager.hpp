@@ -14,10 +14,14 @@
 #include "collidingobject.hpp"
 
 /**
+ * @struct ltObj
  * @brief Foncteur comparant deux objets.
  **/
 struct ltObj
 {
+    /**
+     * @brief Comparer la profondeur de deux \a Object
+     */
     bool operator()(Object * a, Object * b) const
     {
         return *a < *b;
@@ -87,7 +91,7 @@ class ObjectManager
     
     private:
         ObjList _objects; ///< Liste des objets.
-        std::vector<Object *> _added_objs;
+        std::vector<Object *> _added_objs; ///< Liste temporaire des objets à ajouter dans \a _objects
 };
 
 #endif /* OBJECTMANAGER_HPP */ 

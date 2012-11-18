@@ -12,9 +12,14 @@
 
 /**
  * @class ScoreDisplay
+ * @brief Gestion des données à afficher
  */
 class ScoreDisplay: public VisibleObject {
     public:
+    
+        /**
+         * @brief Constructeur
+         */
         ScoreDisplay(const std::string& filename, Banquier *banquier):
                     VisibleObject(50),
                     _banquier(banquier),
@@ -25,6 +30,9 @@ class ScoreDisplay: public VisibleObject {
             _text.SetPosition(0, 0);
         }
 
+        /**
+         * @brief Destructeur
+         */
         ~ScoreDisplay() {}
 
         void draw(sf::RenderWindow& fen) const;

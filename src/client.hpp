@@ -43,8 +43,8 @@ class Client : public Enemy
     private:
         const sf::IntRect _masque_normal; ///< Masque pour extraire le bon sprite de la sprite sheet.
         const sf::IntRect _masque_angry; ///< Masque pour extraire le bon sprite de la sprite sheet.
-        float _elapsed_time;
-        bool _mood;
+        float _elapsed_time; ///< Durée entre chaque changement de sprite
+        bool _mood; ///< Détermine le bon sprite à afficher
 };
 
 #endif // CLIENT_HPP

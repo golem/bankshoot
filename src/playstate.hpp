@@ -17,10 +17,22 @@
 #include "enemyfactory.hpp"
 #include <SFML/Graphics.hpp>
 
+/**
+ * @class PlayState
+ * @brief Phase Gameplay du jeu
+ */
 class PlayState: public GameState
 {
     public:
+
+        /**
+         * @brief Constructeur par défaut
+         */
         PlayState() { }
+        
+        /**
+         * @brief Destructeur
+         */
         ~PlayState() { }
         
         void init();
@@ -33,8 +45,8 @@ class PlayState: public GameState
     private:
         //~ sf::Image _bg;
         //~ sf::Sprite _bg_sprite;
-        ObjectManager _objects;
-        EnemyFactory _factory;
+        ObjectManager _objects; /**< Gestion des objets du jeu */
+        EnemyFactory _factory;  /**< Gestion des ennemis à apparaître */
 };
 
 #endif /* INTROSTATE_HPP */ 

@@ -51,7 +51,7 @@ class DropObject: public CollidingObject
         unsigned int _montant; ///< Montant
 //        sf::Clock _clock; ///< Pour régler la temporisation
         float _vy; ///< Vitesse de déplacement
-        float _time;
+        float _time; ///< Durée pendant laquelle l'objet reste sur place
 };
 
 #endif

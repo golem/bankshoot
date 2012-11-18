@@ -44,18 +44,26 @@ class Banquier: public CollidingObject
         
         void* collision(CollidingObject * o);
         
+        /**
+         * @brief Connaître le score
+         */
         int get_score() const { return _score; }
+        
+        /**
+         * @brief Augmenter le score
+         */
         void add_score(unsigned int montant) { _score += montant; }
 
     private:
-        float _vx;
-        float _vy;
+        float _vx; ///< Vitesse en x
+        float _vy; ///< Vitesse en y
         const sf::IntRect _masque_face; ///< Masque pour extraire le bon sprite de la sprite sheet.
         const sf::IntRect _masque_dos; ///< Masque pour extraire le bon sprite de la sprite sheet.
-        bool _facing_up;
-        float _last_shot;
-        const float _shot_delay; // Ou peut être qu'on pourra faire évoluer ce délai en fonction de powerups...
-        int _score;
+        bool _facing_up; ///< Détermine le bon sprite à afficher
+        float _last_shot; ///< Temps du dernier tir
+        const float _shot_delay; ///< Délai entre chaque tir
+        // Ou peut être qu'on pourra faire évoluer ce délai en fonction de powerups...
+        int _score; ///< Score actuel
 };
 
 #endif /* BANQUIER_HPP */ 

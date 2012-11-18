@@ -13,11 +13,22 @@
 
 /**
  * @class IntroState
+ * @brief Gestion de l'introduction du jeu
  */
 class IntroState: public GameState
 {
     public:
+    
+        /**
+         * @brief Constructeur
+         * 
+         * Initialise la vitesse de rotation
+         */
         IntroState(): _vr(10.f) { }
+
+        /**
+         * @brief Destructeur
+         */
         ~IntroState() { }
         
         void init();
@@ -33,8 +44,8 @@ class IntroState: public GameState
         //~ ObjectManager _objects;
 
 /* On n'a pas forcement besoin de ObjectManager, puisqu'il n'y a qu'une image */
-        Background *_background;
-        float _vr; ///< vitesse angulaire
+        Background *_background;    ///< Arrier plan
+        float _vr;                  ///< Vitesse angulaire
 };
 
 #endif /* INTROSTATE_HPP */ 
