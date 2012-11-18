@@ -25,9 +25,9 @@ class EnemyFactory
          * Définir tous les types d'ennemies disponibles dans le jeu
          */
         enum Enemy_type {
-            thief, /**< Ennemi du type \a Voleur*/
-            mafia,
-            client
+            thief,  /**< Ennemi du type \a Voleur */
+            mafia,  /**< Ennemi du type \a Mafia */
+            client  /**< Ennemi du type \a Client */
         };
         
         /**

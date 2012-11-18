@@ -20,7 +20,7 @@ Enemy* EnemyFactory::generate() const
     }
     else if (type == client) {
         // TODO: Changer l'image
-        enemy = new Client("media/icone.bmp");
+        enemy = new Client("media/client.png");
     }
 
     enemy->set_position(sf::Randomizer::Random(0, (int) (SCREEN_WIDTH - enemy->get_size().x)), 0);
