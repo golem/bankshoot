@@ -16,7 +16,15 @@ class Background: public VisibleObject
 {
     public:
 
-        enum background_side {center, right, left};
+        /**
+         * @enum background_side
+         * @brief Définir la position de l'image à afficher
+         */
+        enum background_side {
+            center, /**< Image au centre */
+            right,  /**< Image à droite */
+            left    /**< Image à gauche */
+        };
 
         /**
          * @brief Constructeur permettant de définir la vitesse de défilement du fond.
@@ -43,11 +51,25 @@ class Background: public VisibleObject
 
         void draw(sf::RenderWindow& fen) const;
 
+        /**
+         * @brief Tourner l'image
+         * @param angle Angle de rotation
+         */
+        void rotation(float angle);
+
+        /**
+         * @brief Faire correspondre le centre de l'image au point (\a x, \a y)
+         * de la fenêtre d'affichage
+         * @param x Abscisse de la fenêtre d'affichage
+         * @param y Ordonnée de la fenêtre d'affichage
+         */
+        void set_center(float x, float y);
+
     protected:
         int _vitesse; ///< Vitesse à laquelle le fond défile.
         sf::Sprite _sprite_bis; ///< Deuxième vue sur l'image.
         float _position[2]; ///< Tableau retenant la position des deux sprites.
-        background_side _side;
+        background_side _side; ///< Position du \a Background
 };
 
 #endif /* REPEATINGOBJECT_HPP */ 
