@@ -27,7 +27,8 @@ class Client : public Enemy
         {
             _vx = CLIENT_AMPLITUDE;
             _vy = CLIENT_SPEED;
-           _sprite.SetSubRect(_masque_normal);
+            _sprite.SetSubRect(_masque_normal);
+            _sprite.SetCenter(_sprite.GetSize().x / 2, _sprite.GetSize().y / 2);
         }
         
         /**
