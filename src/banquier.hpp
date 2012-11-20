@@ -27,7 +27,7 @@ class Banquier: public CollidingObject
         Banquier(const std::string& filename, int z=10) : CollidingObject(filename, z), _vx(BANKER_SPEED), _vy(BANKER_SPEED),
                                                           _masque_face(0, 0, 31, 43), _masque_dos(32, 0, 63, 43),
                                                           _facing_up(true), _last_shot(0.0f), _shot_delay(BANKER_SHOT_DELAY),
-                                                          _score(INITIAL_SCORE)
+                                                          _score(INITIAL_SCORE), _life(BANKER_LIFE)
         {
            //TODO: Vitesses et position arbitraires, sûrement à changer, plus tard
            _sprite.SetSubRect(_masque_dos);
@@ -54,6 +54,18 @@ class Banquier: public CollidingObject
          */
         void add_score(unsigned int montant) { _score += montant; }
 
+        /**
+         * @brief Connaître le nombre de point de vie restant
+         * @return Nombre de point de vie restant
+         */
+        int get_life() const { return _life; }
+        
+        /**
+         * @brief Connaître la position du banquier
+         * @return Position du banquier
+         */
+        sf::Vector2f get_position() { return _sprite.GetPosition(); }
+
     private:
         float _vx; ///< Vitesse en x
         float _vy; ///< Vitesse en y
@@ -64,6 +76,7 @@ class Banquier: public CollidingObject
         const float _shot_delay; ///< Délai entre chaque tir
         // Ou peut être qu'on pourra faire évoluer ce délai en fonction de powerups...
         int _score; ///< Score actuel
+        int _life; ///< Point de vie
 };
 
 #endif /* BANQUIER_HPP */ 
