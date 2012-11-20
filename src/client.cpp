@@ -15,7 +15,7 @@ void* Client::update(const sf::RenderWindow& fen)
         _mood = !_mood;
         if (_mood == true) _sprite.SetSubRect(_masque_normal);
         else _sprite.SetSubRect(_masque_angry);
-        _sprite.SetCenter(_sprite.GetSize().x / 2, _sprite.GetSize().y / 2);
+        //~ _sprite.SetCenter(_sprite.GetSize().x / 2, _sprite.GetSize().y / 2);
         _elapsed_time = 0.0f;
     }
 

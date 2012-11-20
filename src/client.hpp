@@ -20,15 +20,15 @@ class Client : public Enemy
          * @param filename Le chemin de l'image à afficher.
          **/
         Client(const std::string& filename) : Enemy(filename),
-                                              _masque_normal(0, 0, 31, 31),
-                                              _masque_angry(32, 0, 81, 31),
+                                              _masque_normal(0, 0, 47, 31),
+                                              _masque_angry(47, 0, 95, 31),
                                               _elapsed_time(0.0f),
                                               _mood(false)
         {
             _vx = CLIENT_AMPLITUDE;
             _vy = CLIENT_SPEED;
             _sprite.SetSubRect(_masque_normal);
-            _sprite.SetCenter(_sprite.GetSize().x / 2, _sprite.GetSize().y / 2);
+            //~ _sprite.SetCenter(_sprite.GetSize().x / 2, _sprite.GetSize().y / 2);
         }
         
         /**
