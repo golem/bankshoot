@@ -11,6 +11,7 @@
 #include "objectmanager.hpp"
 #include "banquier.hpp"
 #include "voleur.hpp"
+#include "boss.hpp"
 #include "dropobject.hpp"
 #include "fpscounter.hpp"
 #include "scoredisplay.hpp"
@@ -45,8 +46,9 @@ class PlayState: public GameState
     private:
         //~ sf::Image _bg;
         //~ sf::Sprite _bg_sprite;
-        ObjectManager _objects; /**< Gestion des objets du jeu */
-        EnemyFactory _factory;  /**< Gestion des ennemis à apparaître */
+        ObjectManager _objects; ///< Gestion des objets du jeu
+        EnemyFactory _factory;  ///< Gestion des ennemis à apparaître
+        Banquier *_banquier;    ///< Pointeur sur le banquier
 };
 
 #endif /* INTROSTATE_HPP */ 
