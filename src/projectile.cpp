@@ -4,7 +4,7 @@ void* Projectile::update(const sf::RenderWindow& fen)
 {
     float dt = fen.GetFrameTime();
     // Tirer en ligne droite... trop simpliste ??
-    _sprite.Move(0.0f, _vy*dt);
+    _sprite.Move(_vx*dt, _vy*dt);
     
 //     sf::Vector2f size = _sprite.GetSize();
     sf::Vector2f pos = _sprite.GetPosition();
@@ -18,8 +18,13 @@ void* Projectile::update(const sf::RenderWindow& fen)
 
 void* Projectile::collision(CollidingObject * o)
 {
-    Enemy * autre = dynamic_cast<Enemy*>(o);
-    if (autre != NULL) {
+    /* Les projectiles ne se détruisent que s'ils touchent l'adversaire */
+    //~ Enemy * target = dynamic_cast<Enemy*>(o);
+    if ((dynamic_cast<Enemy*>(o) != NULL) && (_id == banker)) {
+        _die();
+    }
+    //~ Banquier * autre = dynamic_cast<Banquier*>(o);
+    if ((dynamic_cast<Banquier*>(o) != NULL) && (_id == enemy)) {
         _die();
     }
     return NULL;
