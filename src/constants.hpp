@@ -21,6 +21,7 @@ const float NEXT_ENEMY_TIME = 2.0f; ///< Durée entre deux apparitions d'ennemi
 const float BANKER_SPEED = 400.0f; ///< Vitesse de déplacement du banquier.
 const float BANKER_SHOT_DELAY = 0.5f; ///< Durée entre deux tirs du banquier.
 const float BANKER_SHOT_SPEED = 200.0f; ///< Vitesse des projectiles du banquier.
+const int BANKER_LIFE = 20;
 
 const float BAG_TIME_TO_LIVE = 1.0f; ///< Temps avant que les sacs commencent à tomber.
 const float BAG_SPEED = 50.0f; ///< Vitesse de chute des sacs d'argent.
@@ -30,5 +31,8 @@ const float THIEF_SPEED = 1*ENEMY_SPEED; ///< Vitesse des voleurs.
 const float MAFIA_SPEED = 1.2*ENEMY_SPEED; ///< Vitesse de la mafia.
 const float CLIENT_SPEED = 1*ENEMY_SPEED; ///< Vitesse des clients en colère.
 const float CLIENT_AMPLITUDE = ENEMY_SPEED; ///< Amplitude du mouvement sinusoidal des clients.
+const int BOSS_LIFE = 20; ///< Point de vie du boss
+const float BOSS_SPEED = 1.5 * ENEMY_SPEED; ///< Vitesse du boss
+const float BOSS_SHOT_DELAY = 0.2f; ///< Délai entre deux tirs du boss
 
 #endif
