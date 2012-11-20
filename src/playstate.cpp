@@ -5,18 +5,19 @@ void PlayState::init()
     //~ _bg.LoadFromFile("./media/icone.bmp");
     //~ _bg_sprite.SetImage(_bg);
     //~ _objects += new Banquier("./media/sprite_banquier.png");
-    Banquier *banquier = new Banquier("media/sprite_banquier.png");
-    _objects += banquier;
+    _banquier = new Banquier("media/sprite_banquier.png");
+    _objects += _banquier;
     _objects += new Background("media/background_floor.png", 100);
     _objects += new Background("media/background_left.png", 50, -1, Background::left);
     _objects += new Background("media/background_right.png", 50, -1, Background::right);
-    
+
     _objects += new FPSCounter("media/BOWSHADW.ttf");
-    _objects += new ScoreDisplay("media/Vera.ttf", banquier);
+    _objects += new ScoreDisplay("media/Vera.ttf", _banquier);
 }
 
 void PlayState::cleanup()
 {
+    _factory.reset_boss();
     _objects.delete_all();
 }
 
@@ -41,9 +42,11 @@ void PlayState::handle_events(Engine * game)
 
 void PlayState::update(Engine * game)
 {
-    if (_factory.get_last_enemy_time() > NEXT_ENEMY_TIME) {
-        _objects += _factory.generate();
-        _factory.restart();
+    if (_factory.has_boss() == false) {
+        if (_factory.get_last_enemy_time() > NEXT_ENEMY_TIME) {
+            _objects += _factory.generate(_banquier);
+            _factory.restart();
+        }
     }
 
     _objects.update_all(game->get_screen());
