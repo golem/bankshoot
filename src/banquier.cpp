@@ -35,9 +35,9 @@ void* Banquier::update(const sf::RenderWindow& fen)
         --_score; // Baisser le score
         _last_shot = 0.0f;
         if (_facing_up)
-            return new Projectile("media/gold.png", pos.x, pos.y);
-        else 
-            return new Projectile("media/gold.png", pos.x, pos.y, BANKER_SHOT_SPEED);
+            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker);
+        else
+            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker, BANKER_SHOT_SPEED);
     }
     
     return NULL;
@@ -47,8 +47,13 @@ void* Banquier::collision(CollidingObject * o)
 {
     Enemy * autre = dynamic_cast<Enemy*>(o);
     if (autre != NULL) {
-        --_score;
+        --_life;
         std::cout << "Meurs !" << std::endl;
     }
+    Projectile* p = dynamic_cast<Projectile*>(o);
+    if ((p != NULL) && (p->get_shot_id() == Projectile::enemy)){
+        --_life;
+    }
+
     return NULL;
 }
