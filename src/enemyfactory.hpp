@@ -7,6 +7,12 @@
  */
 
 #include "enemy.hpp"
+#include "voleur.hpp"
+#include "mafia.hpp"
+#include "client.hpp"
+#include "boss.hpp"
+#include "constants.hpp"
+
 
 #include <SFML/System/Clock.hpp>
 
@@ -27,13 +33,14 @@ class EnemyFactory
         enum Enemy_type {
             thief,  /**< Ennemi du type \a Voleur */
             mafia,  /**< Ennemi du type \a Mafia */
-            client  /**< Ennemi du type \a Client */
+            client, /**< Ennemi du type \a Client */
+            boss    /**< Boss du jeu */
         };
         
         /**
          * @brief Constructeur
          */
-        EnemyFactory() { _clock.Reset(); }
+        EnemyFactory(): _boss_added(false) { _clock.Reset(); }
         
         /**
          * @brief Destructeur
@@ -42,10 +49,15 @@ class EnemyFactory
         
         /**
          * @brief Créer un ennemi
+         * 
+         * Il est nécessaire de connaître la position du banquier, afin que
+         * les tirs des ennemis soient dans la direction de ce dernier
+         * 
+         * @param banquier Pointeur sur le banquier
          * @return Pointeur sur l'ennemi créé
          */
-        Enemy* generate() const;
-        
+        Enemy* generate(Banquier *banquier);
+
         /**
          * @brief Redémarre le \a clock
          */
@@ -55,7 +67,22 @@ class EnemyFactory
          * @brief Donne le temps de la dernière apparition d'un ennemi
          * @return Temps
          */
-        float get_last_enemy_time() { return _clock.GetElapsedTime(); }
+        float get_last_enemy_time();
+
+        /**
+         * @brief Savoir si un boss est présent
+         * 
+         * Lorsqu'un boss est présent, tous les autres types d'ennemi n'apparaissent
+         * plus
+         * 
+         * @return Booléen
+         */ 
+        bool has_boss() const { return _boss_added; }
+
+        /**
+         * @brief Réinitialise le boss
+         */
+        void reset_boss() { _boss_added = false; }
 
     private:
 
@@ -63,9 +90,10 @@ class EnemyFactory
          * @brief Retourne un type d'ennemi au hasard
          * @return Type d'ennemi
          */
-        Enemy_type random_type() const;
+        Enemy_type random_type();
 
-        sf::Clock _clock; /**< Clock */
+        sf::Clock _clock;   ///< Clock
+        bool _boss_added;   ///< \a true si un boss est présent
 };
 
 #endif
