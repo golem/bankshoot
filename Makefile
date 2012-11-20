@@ -34,7 +34,17 @@ OBJ= $(SRC:.cpp=.o)
 # http://stackoverflow.com/questions/2394609/makefile-header-dependencies
 #includes = $(wildcard src/*.hpp)
 
-all: $(EXEC)
+LIB32 = $(wildcard lib32/*.so.1.6)
+LIB32_LN = $(LIB32:.so.1.6=.so)
+LIB64 = $(wildcard lib64/*.so.1.6)
+LIB64_LN = $(LIB64:.so.1.6=.so)
+
+all: $(LIB32_LN) $(LIB64_LN) $(EXEC)
+
+# Création de liens symboliques qui peuvent être détruits par un zippage par exemple...
+#peut être pas nécessaire, et certainement pas beau, mais voilà.
+%.so: %.so.1.6
+	ln -sf $(patsubst $(findstring lib32/, $<)$(findstring lib64/, $<)%,%,$<) $@
 
 depend: .depend
 
