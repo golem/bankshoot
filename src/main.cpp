@@ -3,6 +3,7 @@
 #include "engine.hpp"
 #include "introstate.hpp"
 #include "playstate.hpp"
+#include "endingstate.hpp"
 #include "resourcemanager.hpp"
 
 int main(void)
@@ -17,6 +18,7 @@ int main(void)
     ResourceManager::get_img("media/sprite_banquier.png");
     ResourceManager::get_img("media/voleur.png");
     ResourceManager::get_img("media/mafia.png");
+    ResourceManager::get_img("media/boss.png");
     ResourceManager::get_img("media/client.png");
     ResourceManager::get_img("media/gold.png");
     ResourceManager::get_img("media/sac_dollar.png");
