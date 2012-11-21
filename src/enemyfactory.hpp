@@ -40,7 +40,7 @@ class EnemyFactory
         /**
          * @brief Constructeur
          */
-        EnemyFactory(): _boss_added(false) { _clock.Reset(); }
+        EnemyFactory(): _boss_added(false), _enemi_count(0) { _clock.Reset(); }
         
         /**
          * @brief Destructeur
@@ -82,7 +82,11 @@ class EnemyFactory
         /**
          * @brief Réinitialise le boss
          */
-        void reset_boss() { _boss_added = false; }
+        void reset_boss()
+        {
+            _enemi_count = 0;
+            _boss_added = false;
+        }
 
     private:
 
@@ -94,6 +98,7 @@ class EnemyFactory
 
         sf::Clock _clock;   ///< Clock
         bool _boss_added;   ///< \a true si un boss est présent
+        int _enemi_count;     ///< Compteur : nombre d'ennemis apparus
 };
 
 #endif

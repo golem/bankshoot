@@ -16,6 +16,7 @@ const int INITIAL_SCORE = 100; ///< Score initial
 const int PROPA_MAFIA = 40; ///< Probabilité d'apparition d'un ennemi du type \a Mafia
 const int PROPA_CLIENT = 50; ///< probabilité d'apparition d'un ennemi du type \a Client
 const float NEXT_ENEMY_TIME = 2.0f; ///< Durée entre deux apparitions d'ennemi
+const float NUM_ENEMY_PER_LEVEL = 10;
 
 // Paramètres des objets (TODO: Ces constantes peuvent être une base, à modifier de manière aléatoire par exemple)
 const float BANKER_SPEED = 400.0f; ///< Vitesse de déplacement du banquier.
@@ -34,8 +35,8 @@ const float THIEF_SPEED = 1*ENEMY_SPEED; ///< Vitesse des voleurs.
 const float MAFIA_SPEED = 1.2*ENEMY_SPEED; ///< Vitesse de la mafia.
 const float CLIENT_SPEED = 1*ENEMY_SPEED; ///< Vitesse des clients en colère.
 const float CLIENT_AMPLITUDE = ENEMY_SPEED; ///< Amplitude du mouvement sinusoidal des clients.
-const int BOSS_LIFE = 20; ///< Point de vie du boss
+const int BOSS_LIFE = 10; ///< Point de vie du boss
 const float BOSS_SPEED = 1.5 * ENEMY_SPEED; ///< Vitesse du boss
-const float BOSS_SHOT_DELAY = 0.2f; ///< Délai entre deux tirs du boss
+const float BOSS_SHOT_DELAY = 1.0f; ///< Délai entre deux tirs du boss
 
 #endif

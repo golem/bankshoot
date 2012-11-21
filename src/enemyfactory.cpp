@@ -25,9 +25,15 @@ Enemy* EnemyFactory::generate(Banquier *banquier)
 EnemyFactory::Enemy_type EnemyFactory::random_type()
 {
     // TODO: Je ne sais pas si je fais ça bien, il faudrait que tu vérifies, Chengwu !
+    if (_enemi_count >= NUM_ENEMY_PER_LEVEL) {
+        _boss_added = true;
+        _enemi_count =  0;
+        return boss;
+    }
+    ++_enemi_count;
+
     if (sf::Randomizer::Random(0, 100) < PROPA_CLIENT) return client;
     else if (sf::Randomizer::Random(0, 100) < PROPA_MAFIA) return mafia;
-    else if (sf::Randomizer::Random(0, 100) < 80) { _boss_added = true; return boss; }
     else return thief;
 }
 

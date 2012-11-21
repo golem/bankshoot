@@ -10,7 +10,7 @@ void* Boss::update(const sf::RenderWindow& fen)
     pos.x += _vx*dt;
 
     // Déplace horizontalement
-    if ((pos.x > SCREEN_WIDTH - size.x) || (pos.x < 0))
+    if ((pos.x >= SCREEN_WIDTH - size.x) || (pos.x <= 0))
         _vx = -_vx;
     
     _sprite.SetPosition(pos);
