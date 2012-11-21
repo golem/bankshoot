@@ -21,7 +21,10 @@ const float NEXT_ENEMY_TIME = 2.0f; ///< Durée entre deux apparitions d'ennemi
 const float BANKER_SPEED = 400.0f; ///< Vitesse de déplacement du banquier.
 const float BANKER_SHOT_DELAY = 0.5f; ///< Durée entre deux tirs du banquier.
 const float BANKER_SHOT_SPEED = 200.0f; ///< Vitesse des projectiles du banquier.
-const int BANKER_LIFE = 20;
+const int BANKER_LIFE = 20; ///< Vie du banquier.
+const float BANKER_INVINCIBLE_DURATION = 1.0f; ///< Temps durant lequel le banquier est invincible après un coup.
+const float BANKER_BLINK_PERIOD = 0.1f; ///< Période du clignotement du banquier après qu'il ait été touché.
+const float BANKER_KNOCKBACK = 10.0f; ///< Recul lors d'un choc.
 
 const float BAG_TIME_TO_LIVE = 1.0f; ///< Temps avant que les sacs commencent à tomber.
 const float BAG_SPEED = 50.0f; ///< Vitesse de chute des sacs d'argent.

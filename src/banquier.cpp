@@ -40,6 +40,21 @@ void* Banquier::update(const sf::RenderWindow& fen)
             return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker, BANKER_SHOT_SPEED);
     }
     
+    // Gestion de l'invincibilité
+    if (_invincible) {
+        _last_hit += dt;
+        _last_blink += dt;
+        if (_last_blink > _blink_period) {
+            _toggle_color();
+            _last_blink = 0.0f;
+        }
+        if (_last_hit > _invincible_duration) {
+            _invincible = false;
+            _last_hit = 0.0f;
+            _sprite.SetColor(_couleur_normale);
+        }
+    }
+    
     return NULL;
 }
 
@@ -47,13 +62,39 @@ void* Banquier::collision(CollidingObject * o)
 {
     Enemy * autre = dynamic_cast<Enemy*>(o);
     if (autre != NULL) {
-        --_life;
+        _get_hit();
         std::cout << "Meurs !" << std::endl;
     }
     Projectile* p = dynamic_cast<Projectile*>(o);
     if ((p != NULL) && (p->get_shot_id() == Projectile::enemy)){
-        --_life;
+        _get_hit();
     }
 
     return NULL;
+}
+
+sf::FloatRect Banquier::get_rect() const
+{
+    if (_invincible)
+        return sf::FloatRect(0, 0, 0, 0);
+    else
+        return CollidingObject::get_rect();
+}
+
+void Banquier::_get_hit()
+{
+    // Lorsqu'on se fait toucher, on perd de la vie, on devient momentanément
+    // invincible, et on recule un peu.
+    --_life;
+    _invincible = true;
+    _sprite.Move(0.0f, _knockback);
+    _toggle_color();
+}
+
+void Banquier::_toggle_color()
+{
+    if (_sprite.GetColor() == _couleur_normale)
+        _sprite.SetColor(_transparent);
+    else
+        _sprite.SetColor(_couleur_normale);
 }

@@ -26,7 +26,7 @@ class ScoreDisplay: public VisibleObject {
                     _font(ResourceManager::get_font(filename))
         {
             _text.SetFont(*_font);
-            _text.SetText("Score :");
+            _text.SetText("Capital :");
             _text.SetPosition(0, 0);
         }
 
