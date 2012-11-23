@@ -29,12 +29,17 @@ void IntroState::handle_events(Engine * game)
             game->quit();
         }
         // Appui sur Esc : on quitte
-        if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
             game->quit();
         }
         // Appui sur Espace : on passe à l'état jeu
-        if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
             game->change_state("Play");
+        }
+        // Appui sur F12 : on prend une capture d'écran
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::F12)) {
+            sf::Image screen = game->get_screen().Capture();
+            screen.SaveToFile("screenshot_intro.png");
         }
     }
 }

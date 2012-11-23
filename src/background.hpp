@@ -36,7 +36,7 @@ class Background: public VisibleObject
          * @param side Position de l'image, par défaut placer l'image au centre
          **/
         Background(const std::string& filename, int vitesse, int z=-1, background_side side=center):
-            VisibleObject(filename, z), _vitesse(vitesse), _side(side)
+            VisibleObject(filename, z), _vitesse(vitesse), _side(side), _suppr_img(false)
         {
             _sprite_bis.SetImage(*_img);
 
@@ -46,6 +46,32 @@ class Background: public VisibleObject
             _position[0] = -(float) SCREEN_HEIGHT;
             _position[1] = 0.0f;
 
+        }
+        
+        /**
+         * @brief Constructeur permettant de copier un objet Image pour créer le background.
+         *
+         * @param img L'image à copier
+         * @param z Z-level. Valeur par défaut associée à -1.
+         **/
+        Background(const sf::Image& img, int z=-1) :VisibleObject(z), _vitesse(0), _side(center), _suppr_img(true)
+        {
+             _img =new sf::Image(img);
+            _sprite.SetImage(*_img);
+            _sprite_bis.SetImage(*_img);
+
+            _position[0] = -(float) SCREEN_HEIGHT;
+            _position[1] = 0.0f;
+        }
+        
+        /**
+         * @brief Destructeur effaçant l'image si elle a été allouée dans le constructeur.
+         *
+         **/
+        virtual ~Background()
+        {
+            if (_suppr_img)
+                delete _img;
         }
         
         void * update(const sf::RenderWindow& fen);
@@ -71,6 +97,7 @@ class Background: public VisibleObject
         sf::Sprite _sprite_bis; ///< Deuxième vue sur l'image.
         float _position[2]; ///< Tableau retenant la position des deux sprites.
         background_side _side; ///< Position du \a Background
+        bool _suppr_img; ///< Booléen indiquant si il faut delete l'image lors de la destruction du Background
 };
 
 #endif /* REPEATINGOBJECT_HPP */ 

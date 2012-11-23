@@ -18,7 +18,7 @@ void Engine::change_state(const std::string& name)
     }
     
     // Stocke et initialise le nouvel état
-    _states.push_back(_get_state(name));
+    _states.push_back(get_state(name));
     _states.back()->init();
 }
 
@@ -28,7 +28,7 @@ void Engine::add_state(const std::string& name, GameState * state)
     //~ _map_states.insert(std::make_pair(name, state));
 }
 
-GameState* Engine::_get_state(const std::string& name) const
+GameState* Engine::get_state(const std::string& name) const
 {
     return _map_states.find(name)->second;
 }
@@ -67,7 +67,7 @@ void Engine::push_state(const std::string& name)
         _states.back()->pause();
     
     // Initialise le nouvel état
-    _states.push_back(_get_state(name));
+    _states.push_back(get_state(name));
     _states.back()->init();
 }
 

@@ -6,3 +6,5 @@ bankshoot
 doc
 # Les fichiers relatifs à KDevelop, pas besoin de polluer le dépôt avec ça.
 *.kdev*
+# Les captures d'écran, pas forcément intéressant
+screenshot*
