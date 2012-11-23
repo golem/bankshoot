@@ -101,6 +101,21 @@ class Engine
          **/
         void add_state(const std::string& name, GameState * state);
         
+        /**
+         * @brief Met en pause l'état actuel, et en démarre un autre.
+         *
+         * @param name Le nom du nouvel état.
+         * @return void
+         **/
+        void push_state(const std::string& name);
+        
+        /**
+         * @brief Quitte l'état courant, et reprend le précédent
+         *
+         * @return void
+         **/
+        void pop_state();
+        
     private:
         bool _running; ///< Détermine si le jeu tourne.
         sf::RenderWindow _fenetre; ///< La fenêtre de rendu.

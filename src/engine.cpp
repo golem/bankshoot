@@ -55,3 +55,27 @@ void Engine::draw()
         _states.back()->draw(this);
     _fenetre.Display();
 }
+
+void Engine::push_state(const std::string& name)
+{
+    // Met en pause l'état actuel
+    if (!_states.empty())
+        _states.back()->pause();
+    
+    // Initialise le nouvel état
+    _states.push_back(_get_state(name));
+    _states.back()->init();
+}
+
+void Engine::pop_state()
+{
+    // Nettoie l'état courant
+    if (!_states.empty()) {
+        _states.back()->cleanup();
+        _states.pop_back();
+    }
+    
+    // Reprend l'état précédent
+    if (!_states.empty()) 
+        _states.back()->resume();
+}

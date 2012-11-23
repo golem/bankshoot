@@ -3,6 +3,7 @@
 #include "engine.hpp"
 #include "introstate.hpp"
 #include "playstate.hpp"
+#include "pausestate.hpp"
 #include "endingstate.hpp"
 #include "resourcemanager.hpp"
 
@@ -27,6 +28,7 @@ int main(void)
     Engine game("Bank Shooter");
     game.add_state("Intro", new IntroState());
     game.add_state("Play", new PlayState());
+    game.add_state("Pause", new PauseState());
     game.change_state("Intro");
     // Boucle principale
     while(game.is_running()) {
