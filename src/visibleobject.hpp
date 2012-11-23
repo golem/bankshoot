@@ -82,6 +82,25 @@ class VisibleObject
          * @return bool
          **/
         inline bool is_dead() const { return _dead; }
+        
+        /**
+         * @brief Fixer la position de l'objet au départ
+         * @param x Coordonnée x
+         * @param y Coordonnée y
+         */
+        void set_position(float x, float y) { _sprite.SetPosition(x, y); }
+        
+        /**
+         * @brief Connaitre la position actuelle
+         * @return Position actuelle
+         */
+        const sf::Vector2f& get_position() const { return _sprite.GetPosition(); }
+        
+        /**
+         * @brief Connaitre la taille du sprite
+         * @return Taille du sprite
+         */
+        sf::Vector2f get_size() const { return _sprite.GetSize(); }
     
     protected:
         /**

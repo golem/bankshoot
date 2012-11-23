@@ -64,12 +64,6 @@ class Banquier: public CollidingObject
         int get_life() const { return _life; }
         
         /**
-         * @brief Connaître la position du banquier
-         * @return Position du banquier
-         */
-        sf::Vector2f get_position() { return _sprite.GetPosition(); }
-        
-        /**
          * @brief Retourne vrai si l'objet doit être considéré comme invincible.
          *
          * @return bool
