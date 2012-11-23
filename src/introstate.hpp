@@ -24,7 +24,7 @@ class IntroState: public GameState
          * 
          * Initialise la vitesse de rotation
          */
-        IntroState(): _vr(10.f) { }
+        IntroState(): _background(NULL), _vr(10.f) { }
 
         /**
          * @brief Destructeur

@@ -42,18 +42,22 @@ void Engine::handle_events()
 
 void Engine::update()
 {
-    // On laisse l'état mettre à jour le jeu
-    if (!_states.empty())
-        _states.back()->update(this);
+    if (_running) {
+        // On laisse l'état mettre à jour le jeu
+        if (!_states.empty())
+            _states.back()->update(this);
+    }
 }
 
 void Engine::draw()
 {
-    _fenetre.Clear();
-    // On laisse l'état dessiner l'écran
-    if (!_states.empty())
-        _states.back()->draw(this);
-    _fenetre.Display();
+    if (_running) {
+        _fenetre.Clear();
+        // On laisse l'état dessiner l'écran
+        if (!_states.empty())
+            _states.back()->draw(this);
+        _fenetre.Display();
+    }
 }
 
 void Engine::push_state(const std::string& name)

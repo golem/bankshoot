@@ -14,7 +14,10 @@ void IntroState::init()
 void IntroState::cleanup()
 {
     //~ _objects.delete_all();
-    delete _background;
+    if (_background != NULL) {
+        delete _background;
+        _background = NULL;
+    }
 }
 
 void IntroState::handle_events(Engine * game)
