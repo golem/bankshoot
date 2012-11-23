@@ -20,9 +20,9 @@
 struct ltObj
 {
     /**
-     * @brief Comparer la profondeur de deux \a Object
+     * @brief Comparer la profondeur de deux \a VisibleObject
      */
-    bool operator()(Object * a, Object * b) const
+    bool operator()(VisibleObject * a, VisibleObject * b) const
     {
         return *a < *b;
     }
@@ -40,7 +40,7 @@ struct ltObj
  * C'est un multiset parce que plusieurs éléments avec la même profondeur
  * pourront exister (plusieurs ennemis par exemple).
  **/
-typedef std::multiset<Object *, ltObj> ObjList;
+typedef std::multiset<VisibleObject *, ltObj> ObjList;
 
 /**
  * @brief Classe gérant un ensemble d'objets du jeu.
@@ -87,11 +87,11 @@ class ObjectManager
          * @param obj L'objet à ajouter.
          * @return void
          **/
-        void operator+=(Object * obj);
+        void operator+=(VisibleObject * obj);
     
     private:
         ObjList _objects; ///< Liste des objets.
-        std::vector<Object *> _added_objs; ///< Liste temporaire des objets à ajouter dans \a _objects
+        std::vector<VisibleObject *> _added_objs; ///< Liste temporaire des objets à ajouter dans \a _objects
 };
 
 #endif /* OBJECTMANAGER_HPP */ 

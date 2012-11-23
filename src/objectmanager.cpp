@@ -1,6 +1,6 @@
 #include "objectmanager.hpp"
 
-void ObjectManager::operator+=(Object * obj)
+void ObjectManager::operator+=(VisibleObject * obj)
 {
     _objects.insert(obj);
 }
@@ -10,7 +10,6 @@ void ObjectManager::draw_all(sf::RenderWindow& fen) const
     for (ObjList::const_iterator it = _objects.begin(); it != _objects.end(); ++it) {
         VisibleObject * obj = dynamic_cast<VisibleObject*>(*it);
         if (obj != NULL) obj->draw(fen);
-        //~ (*it)->draw(fen);
     }
 }
 
@@ -21,7 +20,7 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
     for (ObjList::iterator it = _objects.begin(); it != _objects.end(); ++it) {
         new_obj = (*it)->update(fen);
         if (new_obj != NULL) {
-            _added_objs.push_back((Object *) new_obj);
+            _added_objs.push_back((VisibleObject *) new_obj);
         }
     }
     // Une autre boucle pour gérer les collisions
@@ -34,7 +33,7 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
                 if ((autre != NULL) && (obj != autre) && (obj->collides_with(*autre))) {
                     new_obj = obj->collision(autre);
                     if (new_obj != NULL) {
-                        _added_objs.push_back((Object *) new_obj);
+                        _added_objs.push_back((VisibleObject *) new_obj);
                     }
                 }
             }
@@ -52,7 +51,7 @@ void ObjectManager::update_all(const sf::RenderWindow& fen)
     // Encore une boucle pour gérer les objets ajoutés.
     // On les ajoute après avoir géré ceux qui étaient déjà présents pour éviter
     // des comportements bizarres...
-    for (std::vector<Object*>::iterator it = _added_objs.begin() ; it != _added_objs.end(); ++it) {
+    for (std::vector<VisibleObject*>::iterator it = _added_objs.begin() ; it != _added_objs.end(); ++it) {
         _objects.insert(*it);
     }
     _added_objs.clear();
