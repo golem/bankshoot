@@ -18,13 +18,13 @@ void* Enemy::update(const sf::RenderWindow& fen)
 
 void* Enemy::collision(CollidingObject * o)
 {
-    void * autre = dynamic_cast<Banquier*>(o);
-    if (autre != NULL) {
+    Banquier * banquier = dynamic_cast<Banquier*>(o);
+    if ((banquier != NULL) && (!banquier->is_invincible())) {
         _die();
         return NULL;
     }
-    autre = dynamic_cast<Projectile*>(o);
-    if (autre != NULL) {
+    Projectile * proj = dynamic_cast<Projectile*>(o);
+    if (proj != NULL) {
         _die();
         return new DropObject(_sprite.GetPosition(), 5);
     }

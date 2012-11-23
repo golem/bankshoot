@@ -70,13 +70,11 @@ class Banquier: public CollidingObject
         sf::Vector2f get_position() { return _sprite.GetPosition(); }
         
         /**
-         * @brief Récupère la "hitbox" d'un objet, en vue de tester les collisions.
-         * 
-         * Si le banquier est invincible, on retourne un rectangle inexistant, ainsi
-         * le banquier ne subira aucune collision.
-         * @return sf::FloatRect la "hitbox" de l'objet.
+         * @brief Retourne vrai si l'objet doit être considéré comme invincible.
+         *
+         * @return bool
          **/
-        sf::FloatRect get_rect() const;
+        inline bool is_invincible() const { return _invincible; }
 
     private:
         float _vx; ///< Vitesse en x

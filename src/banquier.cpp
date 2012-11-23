@@ -30,16 +30,6 @@ void* Banquier::update(const sf::RenderWindow& fen)
     if (pos.y >= fen.GetHeight() - size.y) pos.y = fen.GetHeight() - size.y;
     _sprite.SetPosition(pos);
     
-    // Création éventuelle d'un projectile
-    if ((_last_shot > _shot_delay) && (input.IsKeyDown(sf::Key::Space))) {
-        --_score; // Baisser le score
-        _last_shot = 0.0f;
-        if (_facing_up)
-            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker);
-        else
-            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker, BANKER_SHOT_SPEED);
-    }
-    
     // Gestion de l'invincibilité
     if (_invincible) {
         _last_hit += dt;
@@ -55,11 +45,25 @@ void* Banquier::update(const sf::RenderWindow& fen)
         }
     }
     
+    // Création éventuelle d'un projectile
+    if ((_last_shot > _shot_delay) && (input.IsKeyDown(sf::Key::Space))) {
+        --_score; // Baisser le score
+        _last_shot = 0.0f;
+        // Les projectiles allant vers le "bas" sont deux fois plus rapides, pour 
+        // compenser la vitesse des ennemis.
+        if (_facing_up)
+            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker);
+        else
+            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker, 2*BANKER_SHOT_SPEED);
+    }
+    
     return NULL;
 }
 
 void* Banquier::collision(CollidingObject * o)
 {
+    if (is_invincible()) return NULL;
+    
     Enemy * autre = dynamic_cast<Enemy*>(o);
     if (autre != NULL) {
         _get_hit();
@@ -71,14 +75,6 @@ void* Banquier::collision(CollidingObject * o)
     }
 
     return NULL;
-}
-
-sf::FloatRect Banquier::get_rect() const
-{
-    if (_invincible)
-        return sf::FloatRect(0, 0, 0, 0);
-    else
-        return CollidingObject::get_rect();
 }
 
 void Banquier::_get_hit()
