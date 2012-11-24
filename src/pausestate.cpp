@@ -7,7 +7,6 @@ void PauseState::draw(Engine* game) const
 
 void PauseState::update(Engine* game)
 {
-
 }
 
 void PauseState::handle_events(Engine* game)

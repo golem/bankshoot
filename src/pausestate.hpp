@@ -14,7 +14,7 @@ class PauseState : public GameState
         virtual void handle_events(Engine* game);
         virtual void cleanup();
         virtual void init();
-        PauseState() { }
+        PauseState(): _background(NULL) { }
         ~PauseState() { delete _background; }
         
         /**

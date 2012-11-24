@@ -13,6 +13,7 @@ int main(void)
     std::cout << "Chargement des images... ";
     // Attention à bien charger les images avec le même chemin (sans commencer par "./")
     ResourceManager::get_img("media/intro_background.png");
+    ResourceManager::get_img("media/intro_background2.png");
     ResourceManager::get_img("media/background_floor.png");
     ResourceManager::get_img("media/background_left.png");
     ResourceManager::get_img("media/background_right.png");
