@@ -11,18 +11,28 @@ void* Client::update(const sf::RenderWindow& fen)
     _sprite.SetPosition(pos);
 
     // petite animation, pour voir de la fumée qui sort par les oreilles
-    if ((_elapsed_time += dt) > 0.2f) {
-        _mood = !_mood;
-        if (_mood == true) _sprite.SetSubRect(_masque_normal);
-        else _sprite.SetSubRect(_masque_angry);
-        //~ _sprite.SetCenter(_sprite.GetSize().x / 2, _sprite.GetSize().y / 2);
-        _elapsed_time = 0.0f;
-    }
-
+    //~ if ((_elapsed_time += dt) > 0.2f) {
+        //~ _mood = !_mood;
+        //~ if (_mood == true) _sprite.SetSubRect(_masque_normal);
+        //~ else _sprite.SetSubRect(_masque_angry);
+        //~ _elapsed_time = 0.0f;
+    //~ }
+    _animation(dt);
     // Contrairement aux autres ennemis, on ne meurt pas en sortant
     //sur les côtés de l'écran, ça serait un peu dommage je pense.
     if ((pos.y <  -size.y) || (pos.y > fen.GetHeight())) {
         _die();
     }
     return NULL;
+}
+
+void Client::_animation(float dt)
+{
+    if ((_elapsed_time += dt) > 0.2f) {
+        _mood = !_mood;
+        if (_mood == true) _sprite.SetSubRect(_masque_normal);
+        else _sprite.SetSubRect(_masque_angry);
+        //~ _sprite.SetCenter(_sprite.GetSize().x / 2, _sprite.GetSize().y / 2);
+        _elapsed_time = 0.0f;
+    }    
 }
