@@ -42,6 +42,7 @@ class Client : public Enemy
         void * update(const sf::RenderWindow& fen);
 
     private:
+        void _animation(float dt);
         const sf::IntRect _masque_normal; ///< Masque pour extraire le bon sprite de la sprite sheet.
         const sf::IntRect _masque_angry; ///< Masque pour extraire le bon sprite de la sprite sheet.
         float _elapsed_time; ///< Durée entre chaque changement de sprite
