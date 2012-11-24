@@ -101,11 +101,20 @@ class Engine
          **/
         void add_state(const std::string& name, GameState * state);
         
-    private:
-        bool _running; ///< Détermine si le jeu tourne.
-        sf::RenderWindow _fenetre; ///< La fenêtre de rendu.
-        std::vector<GameState *> _states; ///< La pile des états actuellements utilisés.
-        std::map<std::string, GameState *> _map_states; ///< Une map de tous les états possibles.
+        /**
+         * @brief Met en pause l'état actuel, et en démarre un autre.
+         *
+         * @param name Le nom du nouvel état.
+         * @return void
+         **/
+        void push_state(const std::string& name);
+        
+        /**
+         * @brief Quitte l'état courant, et reprend le précédent
+         *
+         * @return void
+         **/
+        void pop_state();
         
         /**
          * @brief Récupère un état en utilisant son nom.
@@ -113,7 +122,13 @@ class Engine
          * @param name Le nom de l'état à récupérer.
          * @return GameState*
          **/
-        GameState* _get_state(const std::string& name) const;
+        GameState* get_state(const std::string& name) const;
+        
+    private:
+        bool _running; ///< Détermine si le jeu tourne.
+        sf::RenderWindow _fenetre; ///< La fenêtre de rendu.
+        std::vector<GameState *> _states; ///< La pile des états actuellements utilisés.
+        std::map<std::string, GameState *> _map_states; ///< Une map de tous les états possibles.
 };
 
 #endif /* ENGINE_HPP */ 

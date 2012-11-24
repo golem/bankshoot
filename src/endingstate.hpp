@@ -7,6 +7,7 @@
  */
 
 #include "gamestate.hpp"
+#include "background.hpp"
 
 /**
  * @class EndingState
@@ -18,7 +19,10 @@ class EndingState: public GameState
     
         EndingState() {}
         
-        ~EndingState() {}
+        ~EndingState()
+        {
+            delete _background;
+        }
         
         void init();
         void cleanup();
@@ -28,6 +32,7 @@ class EndingState: public GameState
         void draw(Engine * game) const;
     
     private:
+        Background *_background;
 };
 
 #endif

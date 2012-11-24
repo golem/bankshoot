@@ -1,4 +1,5 @@
 #include "playstate.hpp"
+#include "pausestate.hpp"
 
 void PlayState::init()
 {
@@ -30,13 +31,19 @@ void PlayState::handle_events(Engine * game)
             game->quit();
         }
         // Appui sur Esc : on retourne à l'intro
-        if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
             game->change_state("Intro");
         }
-        //~ // Appui sur Espace : on passe à l'état jeu
-        //~ if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
-            //~ game->change_state(game->get_state("play"));
-        //~ }
+        // Appui sur Entrée : on met le jeu en pause
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Return)) {
+            ((PauseState*) game->get_state("Pause"))->set_background(game->get_screen().Capture());
+            game->push_state("Pause");
+        }
+        // Appui sur F12 : on prend une capture d'écran
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::F12)) {
+            sf::Image screen = game->get_screen().Capture();
+            screen.SaveToFile("screenshot.png");
+        }
     }
 }
 

@@ -57,8 +57,23 @@ class GameState
          **/
         virtual void draw(Engine * game) const = 0;
         
-        //~ virtual void pause() = 0;
-        //~ virtual void resume() = 0;
+        /**
+         * @brief Met en pause l'état.
+         * 
+         * Par défaut, ne fait rien.
+         *
+         * @return void
+         **/
+        virtual void pause() { }
+        
+        /**
+         * @brief Reprend l'état.
+         * 
+         * Par défaut, ne fait rien.
+         *
+         * @return void
+         **/
+        virtual void resume() { }
 };
 
 #endif /* GAMESTATE_HPP */ 

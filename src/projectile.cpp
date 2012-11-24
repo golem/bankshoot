@@ -9,7 +9,7 @@ void* Projectile::update(const sf::RenderWindow& fen)
 //     sf::Vector2f size = _sprite.GetSize();
     sf::Vector2f pos = _sprite.GetPosition();
     
-    if ((pos.y > fen.GetHeight()) || (pos.y < 0) ) {
+    if ((pos.y > fen.GetHeight()) || (pos.y + _sprite.GetSize().y < 0) ) {
         _die(); // le projectile est détruit
     }
     

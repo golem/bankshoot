@@ -30,29 +30,19 @@ void* Banquier::update(const sf::RenderWindow& fen)
     if (pos.y >= fen.GetHeight() - size.y) pos.y = fen.GetHeight() - size.y;
     _sprite.SetPosition(pos);
     
+    // Gestion de l'invincibilité
+    _handle_invincible(_sprite, dt);
+    
     // Création éventuelle d'un projectile
     if ((_last_shot > _shot_delay) && (input.IsKeyDown(sf::Key::Space))) {
         --_score; // Baisser le score
         _last_shot = 0.0f;
+        // Les projectiles allant vers le "bas" sont deux fois plus rapides, pour 
+        // compenser la vitesse des ennemis.
         if (_facing_up)
             return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker);
         else
-            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker, BANKER_SHOT_SPEED);
-    }
-    
-    // Gestion de l'invincibilité
-    if (_invincible) {
-        _last_hit += dt;
-        _last_blink += dt;
-        if (_last_blink > _blink_period) {
-            _toggle_color();
-            _last_blink = 0.0f;
-        }
-        if (_last_hit > _invincible_duration) {
-            _invincible = false;
-            _last_hit = 0.0f;
-            _sprite.SetColor(_couleur_normale);
-        }
+            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker, 2*BANKER_SHOT_SPEED);
     }
     
     return NULL;
@@ -60,41 +50,17 @@ void* Banquier::update(const sf::RenderWindow& fen)
 
 void* Banquier::collision(CollidingObject * o)
 {
+    if (is_invincible()) return NULL;
+    
     Enemy * autre = dynamic_cast<Enemy*>(o);
     if (autre != NULL) {
-        _get_hit();
+        _get_hit(_sprite);
         std::cout << "Meurs !" << std::endl;
     }
     Projectile* p = dynamic_cast<Projectile*>(o);
     if ((p != NULL) && (p->get_shot_id() == Projectile::enemy)){
-        _get_hit();
+        _get_hit(_sprite);
     }
 
     return NULL;
-}
-
-sf::FloatRect Banquier::get_rect() const
-{
-    if (_invincible)
-        return sf::FloatRect(0, 0, 0, 0);
-    else
-        return CollidingObject::get_rect();
-}
-
-void Banquier::_get_hit()
-{
-    // Lorsqu'on se fait toucher, on perd de la vie, on devient momentanément
-    // invincible, et on recule un peu.
-    --_life;
-    _invincible = true;
-    _sprite.Move(0.0f, _knockback);
-    _toggle_color();
-}
-
-void Banquier::_toggle_color()
-{
-    if (_sprite.GetColor() == _couleur_normale)
-        _sprite.SetColor(_transparent);
-    else
-        _sprite.SetColor(_couleur_normale);
 }

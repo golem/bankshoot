@@ -38,5 +38,8 @@ const float CLIENT_AMPLITUDE = ENEMY_SPEED; ///< Amplitude du mouvement sinusoid
 const int BOSS_LIFE = 10; ///< Point de vie du boss
 const float BOSS_SPEED = 1.5 * ENEMY_SPEED; ///< Vitesse du boss
 const float BOSS_SHOT_DELAY = 1.0f; ///< Délai entre deux tirs du boss
+const float BOSS_INVINCIBLE_DURATION = 1.0f; ///< Temps durant lequel le banquier est invincible après un coup.
+const float BOSS_BLINK_PERIOD = 0.1f; ///< Période du clignotement du banquier après qu'il ait été touché.
+const float BOSS_KNOCKBACK = 0.0f; ///< Recul lors d'un choc.
 
 #endif

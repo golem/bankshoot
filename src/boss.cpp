@@ -14,6 +14,9 @@ void* Boss::update(const sf::RenderWindow& fen)
         _vx = -_vx;
     
     _sprite.SetPosition(pos);
+    
+    // Gestion de l'invincibilité
+    _handle_invincible(_sprite, dt);
 
     _last_shot += dt;
     // Lancer des pièces dans la direction du banquier
@@ -34,9 +37,11 @@ void* Boss::update(const sf::RenderWindow& fen)
 
 void* Boss::collision(CollidingObject * o)
 {
+    if (is_invincible()) return NULL;
+    
     Projectile* autre = dynamic_cast<Projectile*>(o);
     if ((autre != NULL) && (autre->get_shot_id() == Projectile::banker)){
-        --_life;
+        _get_hit(_sprite);
     }
 
     // Meure si ses points de vie tombent à 0

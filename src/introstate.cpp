@@ -7,7 +7,7 @@ void IntroState::init()
     _background = new Background("./media/intro_background.png", 0);
     _background_bis = new Background("./media/intro_background2.png", 0);
 
-    /* faire en sorte que le centre de rotation est au milieu */
+    /* faire en sorte que le centre de rotation est en bas au milieu */
     _background->set_center(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
     _background_bis->set_center(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
     //~ _objects += new Background("./media/icone.bmp", 0);
@@ -16,6 +16,14 @@ void IntroState::init()
 void IntroState::cleanup()
 {
     //~ _objects.delete_all();
+    if (_background != NULL) {
+        delete _background;
+        _background = NULL;
+    }
+    if (_background_bis != NULL) {
+        delete _background_bis;
+        _background_bis = NULL;
+    }
 }
 
 void IntroState::handle_events(Engine * game)
@@ -27,12 +35,17 @@ void IntroState::handle_events(Engine * game)
             game->quit();
         }
         // Appui sur Esc : on quitte
-        if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
             game->quit();
         }
         // Appui sur Espace : on passe à l'état jeu
-        if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
             game->change_state("Play");
+        }
+        // Appui sur F12 : on prend une capture d'écran
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::F12)) {
+            sf::Image screen = game->get_screen().Capture();
+            screen.SaveToFile("screenshot_intro.png");
         }
     }
 }
