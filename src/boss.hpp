@@ -14,12 +14,11 @@
  * @class Boss
  * @brief Ennemi plus difficile à tuer
  */
-class Boss: public Enemy
+class Boss: public Enemy, public DamageableObject
 {
     public:
         Boss(const std::string& filename, Banquier *banquier):
-            Enemy(filename),
-            _life(BOSS_LIFE),
+            Enemy(filename), DamageableObject(BOSS_LIFE, BOSS_INVINCIBLE_DURATION, BOSS_BLINK_PERIOD, BOSS_KNOCKBACK),
             _banquier(banquier),
             _shot_delay(BOSS_SHOT_DELAY),
             _last_shot(0.0f)
@@ -35,7 +34,6 @@ class Boss: public Enemy
         void* collision(CollidingObject * o);
 
     private:
-        int _life; ///< Point de vie du boss
         Banquier *_banquier; ///< Pointeur sur banquier, pour connaître la direction des tirs
         float _shot_delay; ///< Délai entre deux tirs
         float _last_shot; ///< Temps
