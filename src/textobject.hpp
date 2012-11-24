@@ -52,6 +52,21 @@ class TextObject : public VisibleObject
          **/
         sf::Font * _font;
         sf::String _texte; ///< Texte à afficher.
+        
+        /**
+         * @brief Fonction permettant de centrer un texte.
+         *
+         * @param h Vrai pour centrer horizontalement le texte.
+         * @param v Vrai pour centrer verticalement le texte.
+         * @return void
+         **/
+        void _center(bool h, bool v)
+        {
+            if (h)
+                _texte.SetX(SCREEN_WIDTH/2 - _texte.GetRect().GetWidth()/2);
+            if (v)
+                _texte.SetY(SCREEN_HEIGHT/2 - _texte.GetRect().GetHeight()/2);
+        }
 };
 
 #endif // TEXTOBJECT_HPP

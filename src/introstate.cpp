@@ -66,4 +66,5 @@ void IntroState::draw(Engine * game) const
     //~ _objects.draw_all(game->get_screen());
     _background->draw(game->get_screen());
     _background_bis->draw(game->get_screen());
+    _titre.draw(game->get_screen());
 }
