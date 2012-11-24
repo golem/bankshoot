@@ -23,6 +23,7 @@ int main(void)
     ResourceManager::get_img("media/boss.png");
     ResourceManager::get_img("media/client.png");
     ResourceManager::get_img("media/gold.png");
+    ResourceManager::get_img("media/munition.png");
     ResourceManager::get_img("media/sac_dollar.png");
     std::cout << "OK !" << std::endl;
     
