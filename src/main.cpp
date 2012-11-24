@@ -25,6 +25,7 @@ int main(void)
     ResourceManager::get_img("media/gold.png");
     ResourceManager::get_img("media/munition.png");
     ResourceManager::get_img("media/sac_dollar.png");
+    ResourceManager::get_img("media/gameover.png");
     std::cout << "OK !" << std::endl;
     
     Engine game("Bank Shooter");

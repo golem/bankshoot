@@ -4,8 +4,8 @@ void IntroState::init()
 {
     //~ _bg.LoadFromFile("./media/background.bmp");
     //~ _bg_sprite.SetImage(_bg);
-    _background = new Background("./media/intro_background.png", 0);
-    _background_bis = new Background("./media/intro_background2.png", 0);
+    _background = new Background("media/intro_background.png", 0);
+    _background_bis = new Background("media/intro_background2.png", 0);
 
     /* faire en sorte que le centre de rotation est en bas au milieu */
     _background->set_center(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);

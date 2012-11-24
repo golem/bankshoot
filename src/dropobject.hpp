@@ -30,7 +30,7 @@ class DropObject: public CollidingObject
          * @param montant Initialise le montant
          **/
         DropObject(sf::Vector2f pos, unsigned int montant=2):
-                    CollidingObject("./media/sac_dollar.png", 0), _montant(montant)
+                    CollidingObject("media/sac_dollar.png", 0), _montant(montant)
         {
             _vy = BAG_SPEED;
             //~ _clock.Reset();
