@@ -31,6 +31,7 @@ int main(void)
     game.add_state("Intro", new IntroState());
     game.add_state("Play", new PlayState());
     game.add_state("Pause", new PauseState());
+    game.add_state("Fin", new EndingState());
     game.change_state("Intro");
     // Boucle principale
     while(game.is_running()) {

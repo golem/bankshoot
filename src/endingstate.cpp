@@ -8,7 +8,10 @@ void EndingState::init()
 
 void EndingState::cleanup()
 {
-
+    if (_background != NULL) {
+        delete _background;
+        _background = NULL;
+    }
 }
 
 void EndingState::handle_events(Engine * game)
@@ -20,10 +23,10 @@ void EndingState::handle_events(Engine * game)
             game->quit();
         }
         // Appui sur Esc : on quitte
-        if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape)) {
             game->quit();
         }
-        if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
             game->change_state("Intro");
         }
 
@@ -32,7 +35,7 @@ void EndingState::handle_events(Engine * game)
 
 void EndingState::update(Engine * game)
 {
-    
+    _background->update(game->get_screen());
 }
 
 void EndingState::draw(Engine * game) const

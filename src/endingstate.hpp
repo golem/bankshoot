@@ -17,12 +17,9 @@ class EndingState: public GameState
 {
     public:
     
-        EndingState() {}
+        EndingState() : _background(NULL) {}
         
-        ~EndingState()
-        {
-            delete _background;
-        }
+        ~EndingState() { cleanup(); }
         
         void init();
         void cleanup();

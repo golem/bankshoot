@@ -56,6 +56,13 @@ class Banquier: public CollidingObject, public DamageableObject
          * @brief Augmenter le score
          */
         void add_score(unsigned int montant) { _score += montant; }
+        
+        /**
+         * @brief Vérifier si le banquier a perdu le jeu.
+         *
+         * @return bool : Vrai si le banquier n'a plus de vie.
+         **/
+        bool a_perdu() const { return (_life <= 0); }
 
     private:
         float _vx; ///< Vitesse en x

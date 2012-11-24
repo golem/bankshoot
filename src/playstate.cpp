@@ -3,9 +3,6 @@
 
 void PlayState::init()
 {
-    //~ _bg.LoadFromFile("./media/icone.bmp");
-    //~ _bg_sprite.SetImage(_bg);
-    //~ _objects += new Banquier("./media/sprite_banquier.png");
     _banquier = new Banquier("media/sprite_banquier.png");
     _objects += _banquier;
     _objects += new Background("media/background_floor.png", 100);
@@ -50,12 +47,6 @@ void PlayState::handle_events(Engine * game)
 
 void PlayState::update(Engine * game)
 {
-    //~ if (_factory.has_boss() == false) {
-        //~ if (_factory.get_last_enemy_time() > NEXT_ENEMY_TIME) {
-            //~ _objects += _factory.generate(_banquier);
-            //~ _factory.restart();
-        //~ }
-    //~ }
     Enemy * enemy = _factory.generate(_banquier);
     if (enemy != NULL) {
         _objects += enemy;
@@ -66,6 +57,9 @@ void PlayState::update(Engine * game)
 
 void PlayState::draw(Engine * game) const
 {
-    //~ game->get_screen().Draw(_bg_sprite);
     _objects.draw_all(game->get_screen());
+    
+    if (_banquier->a_perdu()) {
+        game->change_state("Fin");
+    }
 }

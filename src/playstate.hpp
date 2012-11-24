@@ -44,8 +44,6 @@ class PlayState: public GameState
         void draw(Engine * game) const;
     
     private:
-        //~ sf::Image _bg;
-        //~ sf::Sprite _bg_sprite;
         ObjectManager _objects; ///< Gestion des objets du jeu
         EnemyFactory _factory;  ///< Gestion des ennemis à apparaître
         Banquier *_banquier;    ///< Pointeur sur le banquier
