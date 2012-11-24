@@ -26,11 +26,11 @@ void* Boss::update(const sf::RenderWindow& fen)
         sf::Vector2f target = _banquier->get_position();
         return new Projectile(
             "media/gold.png",
-            pos.x + size.x / 2,
+            pos.x + sf::Randomizer::Random(0, (int) size.x),
             size.y,
             Projectile::enemy,
-            (target.y-pos.y) / (200 * dt),
-            (target.x-pos.x) / (200 * dt)
+            (target.y-pos.y) / (_shot_speed * dt),
+            (target.x-pos.x) / (_shot_speed * dt)
         );
     }
     return NULL;
