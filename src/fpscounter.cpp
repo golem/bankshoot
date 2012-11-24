@@ -1,10 +1,5 @@
 #include "fpscounter.hpp"
 
-void FPSCounter::draw(sf::RenderWindow& fen) const
-{
-    fen.Draw(_texte);
-}
-
 //~ void FPSCounter::update(const sf::RenderWindow& fen)
 //~ {
     //~ // Un entier suffit, pas besoin de plus de précision...

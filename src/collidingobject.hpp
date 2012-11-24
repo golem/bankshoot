@@ -40,7 +40,7 @@ class CollidingObject : public VisibleObject
          *
          * @return sf::FloatRect la "hitbox" de l'objet.
          **/
-        virtual sf::FloatRect get_rect() const
+        sf::FloatRect get_rect() const
         {
             sf::Vector2f size = _sprite.GetSize();
             sf::Vector2f pos = _sprite.GetPosition();
