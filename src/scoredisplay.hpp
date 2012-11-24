@@ -5,29 +5,27 @@
  * @file scoredisplay.hpp
  **/
 
-#include <sstream>
-
+#include "textobject.hpp"
 #include "banquier.hpp"
-
 
 /**
  * @class ScoreDisplay
  * @brief Gestion des données à afficher
  */
-class ScoreDisplay: public VisibleObject {
+class ScoreDisplay: public TextObject
+{
     public:
     
         /**
          * @brief Constructeur
          */
         ScoreDisplay(const std::string& filename, Banquier *banquier):
-                    VisibleObject(50),
-                    _banquier(banquier),
-                    _font(ResourceManager::get_font(filename))
+                    TextObject(filename, "Capital :"),
+                    _banquier(banquier)
         {
-            _text.SetFont(*_font);
-            _text.SetText("Capital :");
-            _text.SetPosition(0, 0);
+            _texte.SetFont(*_font);
+            _texte.SetText("Capital :");
+            _texte.SetPosition(0, 0);
         }
 
         /**
@@ -35,14 +33,11 @@ class ScoreDisplay: public VisibleObject {
          */
         ~ScoreDisplay() {}
 
-        void draw(sf::RenderWindow& fen) const;
         void * update(const sf::RenderWindow& fen);
 
 
     private:
         Banquier *_banquier; ///< Pointeur sur le banquier
-        sf::Font *_font; ///< Font du texte
-        sf::String _text; ///< Texte à afficher
 
 };
 

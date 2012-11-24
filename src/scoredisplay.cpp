@@ -1,10 +1,5 @@
 #include "scoredisplay.hpp"
 
-void ScoreDisplay::draw(sf::RenderWindow& fen) const
-{
-    fen.Draw(_text);
-}
-
 void* ScoreDisplay::update(const sf::RenderWindow& fen)
 {
     fen.GetFrameTime();
@@ -12,7 +7,7 @@ void* ScoreDisplay::update(const sf::RenderWindow& fen)
         std::ostringstream stream;
         stream << "Capital : " << _banquier->get_score() << "$" << std::endl;
         stream << "Vie : " << _banquier->get_life();
-        _text.SetText(stream.str());
+        _texte.SetText(stream.str());
     }
     return NULL;
 }
