@@ -18,12 +18,12 @@ class Mafia: public Enemy
         /**
          * @brief Constructeur
          */
-        Mafia (const std::string& filename) : Enemy(filename)
+        Mafia (const std::string& filename, int level) : Enemy(filename)
         {
             // TODO : mieux gérer ces paramètres, peut être que ça devrait pas être
             //défini dans la superclasse, ou alors fournir un constructeur correct
             _vx = 0.0f;
-            _vy = MAFIA_SPEED;
+            _vy = MAFIA_SPEED + level / 10.0f;
         }
         
         void * update(const sf::RenderWindow& fen);

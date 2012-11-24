@@ -24,7 +24,7 @@ void* Enemy::collision(CollidingObject * o)
         return NULL;
     }
     Projectile * proj = dynamic_cast<Projectile*>(o);
-    if (proj != NULL) {
+    if ((proj != NULL) && (proj->get_shot_id() == Projectile::banker)) {
         _die();
         return new DropObject(_sprite.GetPosition(), 5);
     }

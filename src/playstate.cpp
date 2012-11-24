@@ -19,6 +19,7 @@ void PlayState::init()
 void PlayState::cleanup()
 {
     _factory.reset_boss();
+    _factory.reset_level();
     _objects.delete_all();
 }
 
@@ -49,11 +50,15 @@ void PlayState::handle_events(Engine * game)
 
 void PlayState::update(Engine * game)
 {
-    if (_factory.has_boss() == false) {
-        if (_factory.get_last_enemy_time() > NEXT_ENEMY_TIME) {
-            _objects += _factory.generate(_banquier);
-            _factory.restart();
-        }
+    //~ if (_factory.has_boss() == false) {
+        //~ if (_factory.get_last_enemy_time() > NEXT_ENEMY_TIME) {
+            //~ _objects += _factory.generate(_banquier);
+            //~ _factory.restart();
+        //~ }
+    //~ }
+    Enemy * enemy = _factory.generate(_banquier);
+    if (enemy != NULL) {
+        _objects += enemy;
     }
 
     _objects.update_all(game->get_screen());

@@ -40,12 +40,17 @@ class EnemyFactory
         /**
          * @brief Constructeur
          */
-        EnemyFactory(): _boss_added(false), _enemi_count(0) { _clock.Reset(); }
+        //~ EnemyFactory(): _boss_added(false), _enemi_count(0) { _clock.Reset(); }
+        EnemyFactory() { _clock.Reset(); }
         
         /**
          * @brief Destructeur
          */
-        ~EnemyFactory() {}
+        ~EnemyFactory()
+        {
+            reset_boss();
+            reset_level();
+        }
         
         /**
          * @brief Créer un ennemi
@@ -61,13 +66,13 @@ class EnemyFactory
         /**
          * @brief Redémarre le \a clock
          */
-        void restart() { _clock.Reset(); }
+        //~ void restart() { _clock.Reset(); }
         
         /**
          * @brief Donne le temps de la dernière apparition d'un ennemi
          * @return Temps
          */
-        float get_last_enemy_time();
+        //~ float get_last_enemy_time();
 
         /**
          * @brief Savoir si un boss est présent
@@ -77,16 +82,20 @@ class EnemyFactory
          * 
          * @return Booléen
          */ 
-        bool has_boss() const { return _boss_added; }
+//        bool has_boss() const { return _boss_added; }
+        static int level() { return _level; }
 
         /**
          * @brief Réinitialise le boss
          */
-        void reset_boss()
+        static void reset_boss()
         {
             _enemi_count = 0;
             _boss_added = false;
         }
+        
+        static void next_level() { ++_level; }
+        static void reset_level() { _level = 1; }
 
     private:
 
@@ -94,11 +103,12 @@ class EnemyFactory
          * @brief Retourne un type d'ennemi au hasard
          * @return Type d'ennemi
          */
-        Enemy_type random_type();
+        Enemy_type _random_type();
 
-        sf::Clock _clock;   ///< Clock
-        bool _boss_added;   ///< \a true si un boss est présent
-        int _enemi_count;     ///< Compteur : nombre d'ennemis apparus
+        sf::Clock _clock;           ///< Clock
+        static bool _boss_added;    ///< \a true si un boss est présent
+        static int _enemi_count;    ///< Compteur : nombre d'ennemis apparus
+        static int _level;          ///< Niveau de difficulté
 };
 
 #endif

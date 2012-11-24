@@ -17,13 +17,21 @@
 class Boss: public Enemy, public DamageableObject
 {
     public:
-        Boss(const std::string& filename, Banquier *banquier):
-            Enemy(filename), DamageableObject(BOSS_LIFE, BOSS_INVINCIBLE_DURATION, BOSS_BLINK_PERIOD, BOSS_KNOCKBACK),
+
+        /**
+         * @brief Constructeur
+         * @param filename
+         * @param banquier
+         * @param level
+         */
+        Boss(const std::string& filename, Banquier *banquier, int level):
+            Enemy(filename),
+            DamageableObject(BOSS_LIFE + level, BOSS_INVINCIBLE_DURATION, BOSS_BLINK_PERIOD, BOSS_KNOCKBACK),
             _banquier(banquier),
-            _shot_delay(BOSS_SHOT_DELAY),
+            _shot_delay(BOSS_SHOT_DELAY / level),
             _last_shot(0.0f)
         {
-            _vx = BOSS_SPEED;
+            _vx = BOSS_SPEED + level / 10.0f;
             //~ _sprite.SetCenter(_sprite.GetSize().x / 2, 0.0f);
         }
 
