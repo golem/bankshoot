@@ -33,7 +33,7 @@ class Boss: public Enemy, public DamageableObject
             _shot_speed(BOSS_SHOT_SPEED / log((float) level + 1.0f)),
             _last_shot(0.0f)
         {
-            _vx = BOSS_SPEED + level / 10.0f;
+            _vx = BOSS_SPEED + level * 10.0f;
             //~ _sprite.SetCenter(_sprite.GetSize().x / 2, 0.0f);
         }
 

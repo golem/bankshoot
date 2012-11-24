@@ -40,9 +40,9 @@ void* Banquier::update(const sf::RenderWindow& fen)
         // Les projectiles allant vers le "bas" sont deux fois plus rapides, pour 
         // compenser la vitesse des ennemis.
         if (_facing_up)
-            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker);
+            return new Projectile("media/gold.png", pos.x + size.x / 2, pos.y, Projectile::banker);
         else
-            return new Projectile("media/gold.png", pos.x, pos.y, Projectile::banker, 2*BANKER_SHOT_SPEED);
+            return new Projectile("media/gold.png", pos.x + size.x / 2, pos.y, Projectile::banker, 2*BANKER_SHOT_SPEED);
     }
     
     return NULL;

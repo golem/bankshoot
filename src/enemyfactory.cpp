@@ -14,7 +14,7 @@ Enemy* EnemyFactory::generate(Banquier *banquier)
 
     _clock.Reset();
     if (type == mafia)
-        enemy = new Mafia("media/mafia.png", _level);
+        enemy = new Mafia("media/mafia.png");
 
     else if (type == client)
         enemy = new Client("media/client.png");
