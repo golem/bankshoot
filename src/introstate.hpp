@@ -29,7 +29,11 @@ class IntroState: public GameState
         /**
          * @brief Destructeur
          */
-        ~IntroState() { }
+        ~IntroState()
+        {
+            delete _background;
+            delete _background_bis;
+        }
         
         void init();
         void cleanup();
@@ -45,6 +49,7 @@ class IntroState: public GameState
 
 /* On n'a pas forcement besoin de ObjectManager, puisqu'il n'y a qu'une image */
         Background *_background;    ///< Arrier plan
+        Background *_background_bis;    ///< Arrier plan
         float _vr;                  ///< Vitesse angulaire
 };
 
