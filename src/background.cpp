@@ -36,11 +36,14 @@ void Background::draw(sf::RenderWindow& fen) const
 
 void Background::rotation(float angle)
 {
+    _sprite.Rotate(angle);
     _sprite_bis.Rotate(angle);
 }
 
 void Background::set_center(float x, float y)
 {
+    _sprite.SetCenter(_img->GetWidth() / 2, _img->GetHeight() / 2);
+    _sprite.SetPosition(x, y);
     _sprite_bis.SetCenter(_img->GetWidth() / 2, _img->GetHeight() / 2);
     _sprite_bis.SetPosition(x, y);
 }
