@@ -1,5 +1,6 @@
 #include "playstate.hpp"
 #include "pausestate.hpp"
+#include "endingstate.hpp"
 
 void PlayState::init()
 {
@@ -11,6 +12,8 @@ void PlayState::init()
 
     _objects += new FPSCounter("media/BOWSHADW.ttf");
     _objects += new ScoreDisplay("media/Vera.ttf", _banquier);
+    
+    _elapsed_time = 0.0f;
 }
 
 void PlayState::cleanup()
@@ -51,7 +54,9 @@ void PlayState::update(Engine * game)
     if (enemy != NULL) {
         _objects += enemy;
     }
-
+    
+    _elapsed_time += game->get_screen().GetFrameTime();
+    
     _objects.update_all(game->get_screen());
 }
 
@@ -60,6 +65,7 @@ void PlayState::draw(Engine * game) const
     _objects.draw_all(game->get_screen());
     
     if (_banquier->a_perdu()) {
+        ((EndingState*) game->get_state("Fin"))->set_score(_banquier->get_score(), EnemyFactory::level(), _elapsed_time);
         game->change_state("Fin");
     }
 }

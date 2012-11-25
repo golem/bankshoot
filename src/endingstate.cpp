@@ -12,6 +12,10 @@ void EndingState::cleanup()
         delete _background;
         _background = NULL;
     }
+    if (_score != NULL) {
+        delete _score;
+        _score = NULL;
+    }
 }
 
 void EndingState::handle_events(Engine * game)
@@ -41,4 +45,15 @@ void EndingState::update(Engine * game)
 void EndingState::draw(Engine * game) const
 {
     _background->draw(game->get_screen());
+    if (_score != NULL)
+        _score->draw(game->get_screen());
+}
+
+void EndingState::set_score(int capital, int niveau, float temps)
+{
+    std::ostringstream os;
+    os << "Capital : " << capital << "$" << std::endl;
+    os << "Niveau : " << niveau << std::endl;
+    os << "Temps de jeu : " << temps << " s";
+    _score = new TextObject("media/Fontin-Regular.ttf", os.str(), true, false, true);
 }

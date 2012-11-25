@@ -47,6 +47,8 @@ class PlayState: public GameState
         ObjectManager _objects; ///< Gestion des objets du jeu
         EnemyFactory _factory;  ///< Gestion des ennemis à apparaître
         Banquier *_banquier;    ///< Pointeur sur le banquier
+        
+        float _elapsed_time; ///< Temps de jeu (en secondes).
 };
 
 #endif /* INTROSTATE_HPP */ 

@@ -28,15 +28,19 @@ class TextObject : public VisibleObject
          * @param initial_text Texte à afficher initialement, utile pour régler la position de l'objet.
          * @param center_h Vrai pour centrer horizontalement le texte initial.
          * @param center_v Vrai pour centrer verticalement le texte initial.
+         * @param coller_en_bas Vrai pour placer le texte en bas de la fenêtre.
+         * (ces 3 booleéns pourraient être mieux implémentés... Grâce à un enum par exemple)
          * @param z Z-level. Valeur par défaut associée à 50.
          **/
         TextObject(const std::string& filename, const sf::Unicode::Text& initial_text,
-                   bool center_h=false, bool center_v=false, int z = 50) : VisibleObject(z),
+                   bool center_h=false, bool center_v=false, bool coller_en_bas=false, int z = 50) : VisibleObject(z),
                                               _font(ResourceManager::get_font(filename))
         {
             _texte.SetFont(*_font);
             _texte.SetText(initial_text);
             _center(center_h, center_v);
+            if (coller_en_bas)
+                _texte.SetY(SCREEN_HEIGHT-_texte.GetRect().GetHeight());;
         }
         
         /**
