@@ -22,7 +22,7 @@ Enemy* EnemyFactory::generate(Banquier *banquier)
     else if (type == boss) {
         _boss_added = true;
         //~ enemy = new Boss("media/boss.png", banquier, _level);
-        enemy = new Boss("media/maneki_neku.png", banquier, _level);
+        enemy = new Boss(_select_boss_sprite(), banquier, _level);
     }
 
     else if (type == thief)
@@ -53,3 +53,13 @@ EnemyFactory::Enemy_type EnemyFactory::_random_type()
         //~ return _clock.GetElapsedTime();
     //~ return 0.0f;
 //~ }
+
+const std::string EnemyFactory::_select_boss_sprite()
+{
+    switch (sf::Randomizer::Random(0, 1)) {
+        case 0:
+            return "media/maneki_neku.png";
+        default:
+            return "media/boss.png";
+    }
+}

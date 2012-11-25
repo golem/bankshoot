@@ -104,6 +104,7 @@ class EnemyFactory
          * @return Type d'ennemi
          */
         Enemy_type _random_type();
+        const std::string _select_boss_sprite();
 
         sf::Clock _clock;           ///< Clock
         static bool _boss_added;    ///< \a true si un boss est présent
