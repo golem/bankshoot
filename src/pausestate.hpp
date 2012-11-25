@@ -44,7 +44,11 @@ class PauseState : public GameState
          * @param img L'image à copier dans le fond d'écran.
          * @return void
          **/
-        void set_background(const sf::Image& img) { _background = new Background(img); }
+        void set_background(const sf::Image& img)
+        {
+            _background = new Background(img);
+            _background->set_color(sf::Color(255,255,255,170));
+        }
         
     private:
         /**

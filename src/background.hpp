@@ -91,6 +91,14 @@ class Background: public VisibleObject
          * @param y Ordonnée de la fenêtre d'affichage
          */
         void set_center(float x, float y);
+        
+        /**
+         * @brief Change la couleur du fond.
+         *
+         * @param col La nouvelle couleur.
+         * @return void
+         **/
+        void set_color(sf::Color col) { _sprite.SetColor(col); _sprite_bis.SetColor(col); }
 
     protected:
         int _vitesse; ///< Vitesse à laquelle le fond défile.
