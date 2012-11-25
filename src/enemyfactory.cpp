@@ -21,7 +21,8 @@ Enemy* EnemyFactory::generate(Banquier *banquier)
 
     else if (type == boss) {
         _boss_added = true;
-        enemy = new Boss("media/boss.png", banquier, _level);
+        //~ enemy = new Boss("media/boss.png", banquier, _level);
+        enemy = new Boss("media/maneki_neku.png", banquier, _level);
     }
 
     else if (type == thief)
