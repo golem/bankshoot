@@ -1,4 +1,5 @@
 #include "enemy.hpp"
+#include "enemyfactory.hpp"
 
 void* Enemy::update(const sf::RenderWindow& fen)
 {
@@ -26,7 +27,7 @@ void* Enemy::collision(CollidingObject * o)
     Projectile * proj = dynamic_cast<Projectile*>(o);
     if ((proj != NULL) && (proj->get_shot_id() == Projectile::banker)) {
         _die();
-        return new DropObject(_sprite.GetPosition(), 5);
+        return new DropObject(_sprite.GetPosition(), sf::Randomizer::Random(1, EnemyFactory::level()));
     }
     return NULL;
 }
