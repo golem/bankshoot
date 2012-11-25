@@ -3,7 +3,6 @@
 void EndingState::init()
 {
     _background = new Background("media/gameover.png", 0);
-    _background->set_center(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 }
 
 void EndingState::cleanup()
