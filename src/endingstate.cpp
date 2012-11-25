@@ -55,4 +55,5 @@ void EndingState::set_score(int capital, int niveau, float temps)
     os << "Niveau : " << niveau << std::endl;
     os << "Temps de jeu : " << temps << " s";
     _score = new TextObject("media/Fontin-Regular.ttf", os.str(), true, false, true);
+    _score->set_color(sf::Color::Black);
 }

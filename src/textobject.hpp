@@ -52,6 +52,8 @@ class TextObject : public VisibleObject
         virtual void* update(const sf::RenderWindow& fen) { fen.GetFrameTime(); return NULL; }
         void draw(sf::RenderWindow& fen) const { fen.Draw(_texte); }
         
+        void set_color(const sf::Color& col) { _texte.SetColor(col); }
+        
     protected:
         /**
          * @brief Police utilisée pour afficher le texte.
