@@ -2,11 +2,14 @@
 
 void PauseState::draw(Engine* game) const
 {
-    _background->draw(game->get_screen());
+    if (_background != NULL)
+        _background->draw(game->get_screen());
+    _info->draw(game->get_screen());
 }
 
 void PauseState::update(Engine* game)
 {
+    _info->update(game->get_screen());
 }
 
 void PauseState::handle_events(Engine* game)
@@ -35,9 +38,26 @@ void PauseState::cleanup()
         delete _background;
         _background = NULL;
     }
+    if (_info != NULL) {
+        delete _info;
+        _info = NULL;
+    }
 }
 
 void PauseState::init()
 {
+    _info = new PauseText();
+}
 
+void* PauseState::PauseText::update(const sf::RenderWindow& fen)
+{
+    _elapsed_time += fen.GetFrameTime();
+    if (_elapsed_time > _transition_time) {
+        _elapsed_time = 0.0f;
+        _alpha_croissant = !_alpha_croissant;
+    }
+    _alpha = (_alpha_croissant) ? 255*_elapsed_time/_transition_time : 255*(1-_elapsed_time/_transition_time);
+    _texte.SetColor(sf::Color(255, 255, 255, _alpha));
+    
+    return TextObject::update(fen);
 }

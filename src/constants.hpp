@@ -6,9 +6,15 @@
  * @brief Définition des constantes
  */
 
-const char * const TITLE = "Super\nBank\nShooter"; ///< Titre du jeu, affiché dans l'écran d'introduction.
+/// Titre du jeu, affiché dans l'écran d'introduction.
+const char * const TITLE = "Super\nBank\nShooter";
+/// Texte affiché lorsque le jeu est en pause. (centré très salement)
+const wchar_t * const PAUSE_TEXT =
+    L"                   -- Pause --\n"
+    "Appuyez sur 'Entrée' pour reprendre";
 
-const int FRAMERATE_LIMIT = 0; /**< Nombre maximum d'images par seconde (+1... ?). 0 pour désactiver la limite, 61 pour activer la VSYNC */
+/// Nombre maximum d'images par seconde (+1... ?). 0 pour désactiver la limite, 61 pour activer la VSYNC
+const int FRAMERATE_LIMIT = 0;
 
 const unsigned int SCREEN_WIDTH = 800; ///< Largeur de la fenêtre
 const unsigned int SCREEN_HEIGHT = 600; ///< Hauteur de la fenêtre
