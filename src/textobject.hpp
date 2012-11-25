@@ -26,13 +26,17 @@ class TextObject : public VisibleObject
          *
          * @param filename Chemin de la police à utiliser.
          * @param initial_text Texte à afficher initialement, utile pour régler la position de l'objet.
+         * @param center_h Vrai pour centrer horizontalement le texte initial.
+         * @param center_v Vrai pour centrer verticalement le texte initial.
          * @param z Z-level. Valeur par défaut associée à 50.
          **/
-        TextObject(const std::string& filename, const sf::Unicode::Text& initial_text, int z = 50) : VisibleObject(z),
+        TextObject(const std::string& filename, const sf::Unicode::Text& initial_text,
+                   bool center_h=false, bool center_v=false, int z = 50) : VisibleObject(z),
                                               _font(ResourceManager::get_font(filename))
         {
             _texte.SetFont(*_font);
             _texte.SetText(initial_text);
+            _center(center_h, center_v);
         }
         
         /**
@@ -41,7 +45,7 @@ class TextObject : public VisibleObject
          **/
         virtual ~TextObject() { }
         
-        virtual void* update(const sf::RenderWindow& fen) = 0;
+        virtual void* update(const sf::RenderWindow& fen) { fen.GetFrameTime(); return NULL; }
         void draw(sf::RenderWindow& fen) const { fen.Draw(_texte); }
         
     protected:
