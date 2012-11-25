@@ -62,7 +62,7 @@ class Banquier: public CollidingObject, public DamageableObject
          *
          * @return bool : Vrai si le banquier n'a plus de vie.
          **/
-        bool a_perdu() const { return (_life <= 0); }
+        bool a_perdu() const { return ((_life <= 0) || (_score <= 0)); }
 
     private:
         float _vx; ///< Vitesse en x
