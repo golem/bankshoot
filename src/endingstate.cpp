@@ -32,7 +32,11 @@ void EndingState::handle_events(Engine * game)
         else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Space)) {
             game->change_state("Intro");
         }
-
+        // Appui sur F12 : on prend une capture d'écran
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::F12)) {
+            sf::Image screen = game->get_screen().Capture();
+            screen.SaveToFile("screenshot_end.png");
+        }
     }    
 }
 
