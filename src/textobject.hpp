@@ -51,7 +51,7 @@ class TextObject : public VisibleObject
         virtual ~TextObject() { }
 
         virtual void* update(const sf::RenderWindow& fen) { fen.GetFrameTime(); return NULL; }
-        void draw(sf::RenderWindow& fen) const { fen.Draw(_texte); }
+        void draw(sf::RenderWindow& fen) const { if (is_visible()) fen.Draw(_texte); }
 
         /**
          * @brief Changer la couleur

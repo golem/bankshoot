@@ -30,8 +30,10 @@ void* Background::update(const sf::RenderWindow& fen)
 
 void Background::draw(sf::RenderWindow& fen) const
 {
-    fen.Draw(_sprite);
-    fen.Draw(_sprite_bis);
+    if (is_visible()) {
+        fen.Draw(_sprite);
+        fen.Draw(_sprite_bis);
+    }
 }
 
 void Background::rotation(float angle)

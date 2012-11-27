@@ -47,6 +47,7 @@ class PlayState: public GameState
         ObjectManager _objects; ///< Gestion des objets du jeu
         EnemyFactory _factory;  ///< Gestion des ennemis à apparaître
         Banquier *_banquier;    ///< Pointeur sur le banquier
+        FPSCounter * _counter; ///< Pointeur vers un compteur d'images par seconde.
         
         float _elapsed_time; ///< Temps de jeu (en secondes).
 };

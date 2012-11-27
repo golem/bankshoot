@@ -6,11 +6,13 @@ void PlayState::init()
 {
     _banquier = new Banquier("media/sprite_banquier.png");
     _objects += _banquier;
+    _counter = new FPSCounter("media/BOWSHADW.ttf");
+    _counter->set_visible(false);
+    _objects += _counter;
     _objects += new Background("media/background_floor.png", 100);
     _objects += new Background("media/background_left.png", 50, -1, Background::left);
     _objects += new Background("media/background_right.png", 50, -1, Background::right);
 
-    _objects += new FPSCounter("media/BOWSHADW.ttf");
     _objects += new ScoreDisplay("media/Vera.ttf", _banquier);
     
     _elapsed_time = 0.0f;
@@ -39,6 +41,13 @@ void PlayState::handle_events(Engine * game)
         else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Return)) {
             ((PauseState*) game->get_state("Pause"))->set_background(game->get_screen().Capture());
             game->push_state("Pause");
+        }
+        // Appui sur F1 : on affiche/cache le compteur d'images par seconde
+        else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::F1)) {
+            if (_counter->is_visible())
+                _counter->set_visible(false);
+            else
+                _counter->set_visible(true);
         }
         // Appui sur F12 : on prend une capture d'écran
         else if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::F12)) {

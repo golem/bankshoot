@@ -14,7 +14,7 @@ const wchar_t * const PAUSE_TEXT =
     "Appuyez sur 'Entrée' pour reprendre";
 
 /// Nombre maximum d'images par seconde (+1... ?). 0 pour désactiver la limite, 61 pour activer la VSYNC
-const int FRAMERATE_LIMIT = 0;
+const int FRAMERATE_LIMIT = 61;
 
 const unsigned int SCREEN_WIDTH = 800; ///< Largeur de la fenêtre
 const unsigned int SCREEN_HEIGHT = 600; ///< Hauteur de la fenêtre

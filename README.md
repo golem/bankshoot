@@ -68,4 +68,7 @@ Finalement, lorsque le banquier n'a plus de vie ou de capital, on arrive sur
 un écran de game over récapitulant ses performances. À partir de cet écran,
 *espace* fait retourner à l'écran d'introduction, et *échap* quitte le jeu.
 
-À tout moment, l'appui sur la touche *F12* permet de réaliser une capture d'écran.
+Un appui sur la touche F1 pendant une partie affiche/cache le compteur d'images
+par seconde (ce nombre devrait être limité à 60 FPS, cf. `FRAMERATE_LIMIT` dans le fichier `constants.hpp`).
+
+À tout moment, l'appui sur la touche *F12* permet de réaliser une capture d'écran (c'est le seul moyen pour retenir un score...).

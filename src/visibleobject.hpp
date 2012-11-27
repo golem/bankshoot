@@ -23,7 +23,7 @@ class VisibleObject
          *
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 0.)
          **/
-        VisibleObject(int z=0) : _z(z), _dead(false) { std::cout << "Création d'un objet" << std::endl; }
+        VisibleObject(int z=0) : _z(z), _dead(false), _visible(true) { std::cout << "Création d'un objet" << std::endl; }
         
         /**
          * @brief Constructeur permettant de charger une image (devrait être utilisé).
