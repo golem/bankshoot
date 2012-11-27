@@ -11,6 +11,7 @@
 #include "constants.hpp"
 
 #include <cmath>
+
 /**
  * @class Boss
  * @brief Ennemi plus difficile à tuer
@@ -21,9 +22,9 @@ class Boss: public Enemy, public DamageableObject
 
         /**
          * @brief Constructeur
-         * @param filename
-         * @param banquier
-         * @param level
+         * @param filename Chemin de l'image à afficher
+         * @param banquier Pointeur sur le boss
+         * @param level Moduler la puissance du boss en fonction de la difficulté
          */
         Boss(const std::string& filename, Banquier *banquier, int level):
             Enemy(filename),
@@ -34,9 +35,11 @@ class Boss: public Enemy, public DamageableObject
             _last_shot(0.0f)
         {
             _vx = BOSS_SPEED + level * 10.0f;
-            //~ _sprite.SetCenter(_sprite.GetSize().x / 2, 0.0f);
         }
 
+        /**
+         * @brief Destructeur
+         */
         ~Boss() {}
         
         void* update(const sf::RenderWindow& fen);
@@ -46,8 +49,8 @@ class Boss: public Enemy, public DamageableObject
     private:
         Banquier *_banquier; ///< Pointeur sur banquier, pour connaître la direction des tirs
         float _shot_delay; ///< Délai entre deux tirs
-        float _shot_speed;
-        float _last_shot; ///< Temps
+        float _shot_speed; ///< Vitesse des tirs
+        float _last_shot; ///< Temps du dernier tir
 };
 
 #endif

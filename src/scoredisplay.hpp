@@ -18,6 +18,8 @@ class ScoreDisplay: public TextObject
     
         /**
          * @brief Constructeur
+         * @param filename
+         * @param banquier
          */
         ScoreDisplay(const std::string& filename, Banquier *banquier):
                     TextObject(filename, "Capital :"),
@@ -35,10 +37,8 @@ class ScoreDisplay: public TextObject
 
         void * update(const sf::RenderWindow& fen);
 
-
     private:
         Banquier *_banquier; ///< Pointeur sur le banquier
-
 };
 
 #endif

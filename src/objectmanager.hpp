@@ -48,10 +48,12 @@ typedef std::multiset<VisibleObject *, ltObj> ObjList;
 class ObjectManager
 {
     public:
+
         /**
          * @brief Constructeur par défaut.
          **/
         ObjectManager() : _objects() { }
+
         /**
          * @brief Destructeur : détruit tous les objets gérés.
          **/
@@ -66,6 +68,7 @@ class ObjectManager
          * @return void
          **/
         void delete_all();
+
         /**
          * @brief Dessine tous les objets gérés.
          *
@@ -73,6 +76,7 @@ class ObjectManager
          * @return void
          **/
         void draw_all(sf::RenderWindow& fen) const;
+
         /**
          * @brief Met à jour tous les objets gérés.
          *

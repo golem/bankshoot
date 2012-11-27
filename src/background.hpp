@@ -21,9 +21,9 @@ class Background: public VisibleObject
          * @brief Définir la position de l'image à afficher
          */
         enum background_side {
-            center, /**< Image au centre */
-            right,  /**< Image à droite */
-            left    /**< Image à gauche */
+            center, ///< Image au centre
+            right,  ///< Image à droite
+            left    ///< Image à gauche
         };
 
         /**
@@ -47,14 +47,15 @@ class Background: public VisibleObject
             _position[1] = 0.0f;
 
         }
-        
+
         /**
          * @brief Constructeur permettant de copier un objet Image pour créer le background.
          *
          * @param img L'image à copier
          * @param z Z-level. Valeur par défaut associée à -1.
          **/
-        Background(const sf::Image& img, int z=-1) :VisibleObject(z), _vitesse(0), _side(center), _suppr_img(true)
+        Background(const sf::Image& img, int z=-1):
+            VisibleObject(z), _vitesse(0), _side(center), _suppr_img(true)
         {
              _img =new sf::Image(img);
             _sprite.SetImage(*_img);
@@ -63,7 +64,7 @@ class Background: public VisibleObject
             _position[0] = -(float) SCREEN_HEIGHT;
             _position[1] = 0.0f;
         }
-        
+
         /**
          * @brief Destructeur effaçant l'image si elle a été allouée dans le constructeur.
          *
@@ -73,7 +74,7 @@ class Background: public VisibleObject
             if (_suppr_img)
                 delete _img;
         }
-        
+
         void * update(const sf::RenderWindow& fen);
 
         void draw(sf::RenderWindow& fen) const;
@@ -91,7 +92,7 @@ class Background: public VisibleObject
          * @param y Ordonnée de la fenêtre d'affichage
          */
         void set_center(float x, float y);
-        
+
         /**
          * @brief Change la couleur du fond.
          *

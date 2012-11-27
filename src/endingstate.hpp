@@ -17,18 +17,24 @@
 class EndingState: public GameState
 {
     public:
-    
+
+        /**
+         * @brief Constructeur
+         */
         EndingState() : _background(NULL), _score(NULL) {}
-        
+
+        /**
+         * @brief Destructeur
+         */
         ~EndingState() { cleanup(); }
-        
+
         void init();
         void cleanup();
-        
+
         void handle_events(Engine * game);
         void update(Engine * game);
         void draw(Engine * game) const;
-        
+
         /**
          * @brief Crée le texte représentant le score.
          *
@@ -38,7 +44,7 @@ class EndingState: public GameState
          * @return void
          **/
         void set_score(int capital, int niveau, float temps);
-    
+
     private:
         Background *_background; ///< Fond d'écran.
         TextObject * _score; ///< Texte affichant le score.

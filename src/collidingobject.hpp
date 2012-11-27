@@ -23,6 +23,7 @@ class CollidingObject : public VisibleObject
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 0.)
          **/
         CollidingObject(int z=0) : VisibleObject(z) { }
+
         /**
          * @brief Constructeur permettant de charger une image (devrait être utilisé).
          *
@@ -30,6 +31,7 @@ class CollidingObject : public VisibleObject
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 0.)
          **/
         CollidingObject(const std::string& filename, int z=0) : VisibleObject(filename, z) { }
+
         /**
          * @brief Destructeur (virtuel pour autoriser un héritage correct).
          **/
@@ -46,6 +48,7 @@ class CollidingObject : public VisibleObject
             sf::Vector2f pos = _sprite.GetPosition();
             return sf::FloatRect(pos.x, pos.y, pos.x + size.x, pos.y + size.y);
         }
+
         /**
          * @brief Vérifie si deux objets collisionnent.
          *
@@ -53,6 +56,7 @@ class CollidingObject : public VisibleObject
          * @return bool
          **/
         bool collides_with(const CollidingObject& o) { return this->get_rect().Intersects(o.get_rect()); }
+
         /**
          * @brief Action à réaliser lors d'une collision.
          * 

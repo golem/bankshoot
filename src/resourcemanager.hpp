@@ -24,6 +24,7 @@ typedef std::map<std::string, sf::Font *> FontMap; ///< Liste de pointeurs sur s
 class ResourceManager
 {
     public:
+
         /**
          * @brief Récupère une image grâce à son nom.
          * 
@@ -35,6 +36,7 @@ class ResourceManager
          * @return sf::Image*
          **/
         static sf::Image * get_img(const std::string& filename);
+
         /**
          * @brief Récupère une police grâce à son nom.
          * 
@@ -44,6 +46,7 @@ class ResourceManager
          * @return sf::Font*
          **/
         static sf::Font * get_font(const std::string& filename);
+
         /**
          * @brief Delete toutes les ressources gérées par la classe.
          * 
@@ -55,8 +58,8 @@ class ResourceManager
         static void cleanup();
         
     private:
-        static ImgMap _imgs; ///< Liste des images.
-        static FontMap _fonts; ///< Liste des polices.
+        static ImgMap _imgs;    ///< Liste des images.
+        static FontMap _fonts;  ///< Liste des polices.
 };
 
 #endif /* RESOURCEMANAGER_HPP */ 

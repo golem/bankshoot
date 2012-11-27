@@ -18,18 +18,19 @@ class PauseState : public GameState
 {
 
     public:
+
         /**
          * @brief Constructeur.
          *
          **/
         PauseState(): _background(NULL), _info(NULL) { }
-        
+
         /**
          * @brief Destructeur.
          *
          **/
         ~PauseState() { cleanup(); }
-        
+
         virtual void draw(Engine* game) const;
         virtual void update(Engine* game);
         virtual void handle_events(Engine* game);
@@ -49,14 +50,16 @@ class PauseState : public GameState
             _background = new Background(img);
             _background->set_color(sf::Color(255,255,255,170));
         }
-        
+
     private:
+
         /**
          * @brief Texte clignotant indiquant qu'on est en pause.
          **/
         class PauseText : public TextObject
         {
             public:
+
                 /**
                  * @brief Constructeur.
                  **/
@@ -74,13 +77,14 @@ class PauseState : public GameState
                  * @return void*
                  **/
                 virtual void* update(const sf::RenderWindow& fen);
+
             private:
                 unsigned char _alpha; ///< Transparence du texte.
                 const float _transition_time; ///< Temps entre l'état transparent et l'état normal.
                 float _elapsed_time; ///< Temps depuis la dernière frame capturée.
                 bool _alpha_croissant; ///< Vrai si on passe de l'état transparent à l'état normal.
         };
-        
+
         Background * _background; ///< Fond d'écran (idéalement une capture d'écran de l'état de jeu).
         PauseText * _info; ///< Texte indiquant qu'on est en pause.
 };

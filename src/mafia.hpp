@@ -18,19 +18,29 @@ class Mafia: public Enemy
     
         /**
          * @brief Constructeur
+         * @param filename Chemin de l'image à afficher
          */
-        Mafia (const std::string& filename) : Enemy(filename), _elapsed_time(0.0f), _shot_delay(MAFIA_SHOT_DELAY)
+        Mafia (const std::string& filename): Enemy(filename),
+                                             _elapsed_time(0.0f),
+                                             _shot_delay(MAFIA_SHOT_DELAY)
         {
-            // TODO : mieux gérer ces paramètres, peut être que ça devrait pas être
-            //défini dans la superclasse, ou alors fournir un constructeur correct
             _vx = 0.0f;
             _vy = MAFIA_SPEED;
         }
-        
+
+        /**
+         * @brief Met à jour l'objet.
+         * 
+         * Cet ennmemi peut tirer des balles
+         *
+         * @param fen Fenêtre de rendu à laquelle appartient l'objet.
+         * @return Pointeur vers un éventuel \a Projectile
+         **/
         void * update(const sf::RenderWindow& fen);
+
     private:
-        float _elapsed_time;
-        float _shot_delay;
+        float _elapsed_time; ///< Temps du dernier tir
+        float _shot_delay; ///< Délai entre deux tirs
 };
 
 #endif

@@ -43,7 +43,7 @@ class VisibleObject
          *
          **/
         virtual ~VisibleObject() { std::cout << "Destruction d'un objet" << std::endl; }
-        
+
         /**
          * @brief Met à jour l'objet.
          * 

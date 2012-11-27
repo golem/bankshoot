@@ -31,20 +31,23 @@ class EnemyFactory
          * Définir tous les types d'ennemies disponibles dans le jeu
          */
         enum Enemy_type {
-            thief,  /**< Ennemi du type \a Voleur */
-            mafia,  /**< Ennemi du type \a Mafia */
-            client, /**< Ennemi du type \a Client */
-            boss    /**< Boss du jeu */
+            thief,  ///< Ennemi du type \a Voleur
+            mafia,  ///< Ennemi du type \a Mafia
+            client, ///< Ennemi du type \a Client
+            boss    ///< Boss du jeu
         };
         
         /**
          * @brief Constructeur
+         * 
+         * Réinitialise \a Clock
          */
-        //~ EnemyFactory(): _boss_added(false), _enemi_count(0) { _clock.Reset(); }
         EnemyFactory() { _clock.Reset(); }
         
         /**
          * @brief Destructeur
+         * 
+         * Réinitialise la difficulté
          */
         ~EnemyFactory()
         {
@@ -64,25 +67,9 @@ class EnemyFactory
         Enemy* generate(Banquier *banquier);
 
         /**
-         * @brief Redémarre le \a clock
+         * @brief Connaître le niveau du jeu
+         * @return Le niveau de difficulté
          */
-        //~ void restart() { _clock.Reset(); }
-        
-        /**
-         * @brief Donne le temps de la dernière apparition d'un ennemi
-         * @return Temps
-         */
-        //~ float get_last_enemy_time();
-
-        /**
-         * @brief Savoir si un boss est présent
-         * 
-         * Lorsqu'un boss est présent, tous les autres types d'ennemi n'apparaissent
-         * plus
-         * 
-         * @return Booléen
-         */ 
-//        bool has_boss() const { return _boss_added; }
         static int level() { return _level; }
 
         /**
@@ -94,7 +81,14 @@ class EnemyFactory
             _boss_added = false;
         }
         
+        /**
+         * @brief Augmenter le niveau de difficulté
+         */
         static void next_level() { ++_level; }
+
+        /**
+         * @brief Réinitialise le niveau de difficulté
+         */
         static void reset_level() { _level = 1; }
 
     private:
@@ -104,6 +98,11 @@ class EnemyFactory
          * @return Type d'ennemi
          */
         Enemy_type _random_type();
+
+        /**
+         * @brief Sélectionne au hasard une image pour le boss
+         * @return Nom du l'image
+         */
         const std::string _select_boss_sprite();
 
         sf::Clock _clock;           ///< Clock

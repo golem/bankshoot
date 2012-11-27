@@ -18,6 +18,7 @@
 class Enemy: public CollidingObject
 {
     public:
+
         /**
          * @brief Destructeur (virtuel pour autoriser un héritage correct).
          *
@@ -33,8 +34,9 @@ class Enemy: public CollidingObject
          * @return void
          **/
         virtual void* collision(CollidingObject * o);
-        
+
     protected:
+
         /**
          * @brief Constructeur (protégé pour préciser que c'est une classe abstraite).
          *

@@ -18,6 +18,7 @@
 class TextObject : public VisibleObject
 {
     public:
+
         /**
          * @brief Constructeur.
          * 
@@ -48,13 +49,18 @@ class TextObject : public VisibleObject
          *
          **/
         virtual ~TextObject() { }
-        
+
         virtual void* update(const sf::RenderWindow& fen) { fen.GetFrameTime(); return NULL; }
         void draw(sf::RenderWindow& fen) const { fen.Draw(_texte); }
-        
+
+        /**
+         * @brief Changer la couleur
+         * @param col Référence sur une couleur
+         */
         void set_color(const sf::Color& col) { _texte.SetColor(col); }
-        
+
     protected:
+
         /**
          * @brief Police utilisée pour afficher le texte.
          * 
@@ -62,7 +68,7 @@ class TextObject : public VisibleObject
          **/
         sf::Font * _font;
         sf::String _texte; ///< Texte à afficher.
-        
+
         /**
          * @brief Fonction permettant de centrer un texte.
          *

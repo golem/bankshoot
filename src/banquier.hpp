@@ -25,18 +25,18 @@ class Banquier: public CollidingObject, public DamageableObject
          * @param filename Le chemin de l'image à utiliser.
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 10.)
          **/
-        Banquier(const std::string& filename, int z=10) : CollidingObject(filename, z),
-                                            DamageableObject(BANKER_LIFE, BANKER_INVINCIBLE_DURATION, BANKER_BLINK_PERIOD, BANKER_KNOCKBACK),
-                                                          _vx(BANKER_SPEED), _vy(BANKER_SPEED),
-                                                          _masque_face(0, 0, 31, 43), _masque_dos(32, 0, 63, 43),
-                                                          _facing_up(true), _last_shot(0.0f), _shot_delay(BANKER_SHOT_DELAY),
-                                                          _score(INITIAL_SCORE)
+        Banquier(const std::string& filename, int z=10):
+            CollidingObject(filename, z),
+            DamageableObject(BANKER_LIFE, BANKER_INVINCIBLE_DURATION, BANKER_BLINK_PERIOD, BANKER_KNOCKBACK),
+            _vx(BANKER_SPEED), _vy(BANKER_SPEED),
+            _masque_face(0, 0, 31, 43), _masque_dos(32, 0, 63, 43),
+            _facing_up(true), _last_shot(0.0f), _shot_delay(BANKER_SHOT_DELAY),
+            _score(INITIAL_SCORE)
         {
-           //TODO: Vitesses et position arbitraires, sûrement à changer, plus tard
            _sprite.SetSubRect(_masque_dos);
            _sprite.SetPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT);
         }
-        
+
         /**
          * @brief Déplace le banquier en fonction des touches appuyées.
          *
@@ -44,19 +44,19 @@ class Banquier: public CollidingObject, public DamageableObject
          * @return void
          **/
         void * update(const sf::RenderWindow& fen);
-        
+
         void* collision(CollidingObject * o);
-        
+
         /**
          * @brief Connaître le score
          */
         int get_score() const { return _score; }
-        
+
         /**
          * @brief Augmenter le score
          */
         void add_score(unsigned int montant) { _score += montant; }
-        
+
         /**
          * @brief Vérifier si le banquier a perdu le jeu.
          *

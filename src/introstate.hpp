@@ -21,16 +21,16 @@ class IntroState: public GameState
     public:
     
         /**
-* @brief Constructeur
-*
-* Initialise la vitesse de rotation
-*/
+         * @brief Constructeur
+         *
+         * Initialise la vitesse de rotation
+         */
         IntroState(): _background(NULL), _background_bis(NULL), _vr(10.f), 
                       _titre("media/Fontin-Regular.ttf", TITLE, true, true) { }
 
         /**
-* @brief Destructeur
-*/
+         * @brief Destructeur
+         */
         ~IntroState() { }
         
         void init();
