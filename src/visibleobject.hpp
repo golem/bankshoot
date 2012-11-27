@@ -32,7 +32,7 @@ class VisibleObject
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 0.)
          **/
         VisibleObject(const std::string& filename, int z=0) : _img(ResourceManager::get_img(filename)),
-                                                            _sprite(), _z(z), _dead(false)
+                                                            _sprite(), _z(z), _dead(false), _visible(true)
         {
             std::cout << "Création d'un objet" << std::endl;
             _sprite.SetImage(*_img);
@@ -62,7 +62,11 @@ class VisibleObject
          * @param fen La fenêtre de rendu sur laquelle dessiner l'objet.
          * @return void
          **/
-        virtual void draw(sf::RenderWindow& fen) const;
+        virtual void draw(sf::RenderWindow& fen) const
+        {
+            if (is_visible())
+                fen.Draw(_sprite);
+        }
         
         /**
          * @brief Compare deux objets en fonction de leur hauteur.
@@ -101,6 +105,21 @@ class VisibleObject
          * @return Taille du sprite
          */
         sf::Vector2f get_size() const { return _sprite.GetSize(); }
+        
+        /**
+         * @brief Détermine si l'objet doit être dessiné.
+         *
+         * @return bool
+         **/
+        bool is_visible() const { return _visible; }
+        
+        /**
+         * @brief Règle la visibilité de l'objet.
+         *
+         * @param vis Vrai si l'objet doit être dessiné, faux sinon.
+         * @return void
+         **/
+        void set_visible(bool vis) { _visible = vis; }
     
     protected:
         /**
@@ -132,6 +151,7 @@ class VisibleObject
          **/
         int _z;
         bool _dead; ///< Variable déterminant si il faut supprimer l'objet.
+        bool _visible; ///< Variable déterminant si il faut supprimer l'objet.
 };
 
 #endif /* VISIBLEOBJECT_HPP */ 
