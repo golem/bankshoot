@@ -23,7 +23,7 @@ class VisibleObject
          *
          * @param z "Hauteur" de l'objet. (Valeur par défaut associée à 0.)
          **/
-        VisibleObject(int z=0) : _z(z), _dead(false), _visible(true) { std::cout << "Création d'un objet" << std::endl; }
+        VisibleObject(int z=0) : _z(z), _dead(false), _visible(true) { }
         
         /**
          * @brief Constructeur permettant de charger une image (devrait être utilisé).
@@ -34,7 +34,6 @@ class VisibleObject
         VisibleObject(const std::string& filename, int z=0) : _img(ResourceManager::get_img(filename)),
                                                             _sprite(), _z(z), _dead(false), _visible(true)
         {
-            std::cout << "Création d'un objet" << std::endl;
             _sprite.SetImage(*_img);
         }
         
@@ -42,7 +41,7 @@ class VisibleObject
          * @brief Destructeur (virtuel pour autoriser un héritage correct).
          *
          **/
-        virtual ~VisibleObject() { std::cout << "Destruction d'un objet" << std::endl; }
+        virtual ~VisibleObject() {  }
 
         /**
          * @brief Met à jour l'objet.
@@ -139,7 +138,7 @@ class VisibleObject
          *
          * @return void
          **/
-        void _die() { std::cout << "Argh!" << std::endl; _dead = true; }
+        void _die() { _dead = true; }
         
     private:
         /**

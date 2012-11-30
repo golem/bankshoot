@@ -55,7 +55,6 @@ void* Banquier::collision(CollidingObject * o)
     Enemy * autre = dynamic_cast<Enemy*>(o);
     if (autre != NULL) {
         _get_hit(_sprite);
-        std::cout << "Meurs !" << std::endl;
     }
     Projectile* p = dynamic_cast<Projectile*>(o);
     if ((p != NULL) && (p->get_shot_id() == Projectile::enemy)){
