@@ -27,7 +27,7 @@ void* Enemy::collision(CollidingObject * o)
     Projectile * proj = dynamic_cast<Projectile*>(o);
     if ((proj != NULL) && (proj->get_shot_id() == Projectile::banker)) {
         _die();
-        return new DropObject(_sprite.GetPosition(), sf::Randomizer::Random(1, EnemyFactory::level()));
+        return new DropObject(_sprite.GetPosition(), CASH + sf::Randomizer::Random(1, EnemyFactory::level()));
     }
     return NULL;
 }

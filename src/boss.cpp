@@ -50,6 +50,7 @@ void* Boss::collision(CollidingObject * o)
         EnemyFactory::reset_boss();
         EnemyFactory::next_level();
         _die();
+        return new DropObject(_sprite.GetPosition(), CASH + sf::Randomizer::Random(1, EnemyFactory::level()));
     }
     return NULL;
 }
