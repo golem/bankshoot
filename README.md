@@ -29,14 +29,20 @@ Pour des raisons pratiques par rapport aux ordinateurs de l'université, nous la
 Pour compiler le programme, il faut d'abord installer quelques dépendances
 (cf. http://www.sfml-dev.org/tutorials/1.6/start-linux.php), par exemple sur une Debian-based :
 
+```bash
+# apt-get build-dep libsfml
 ```
-apt-get build-dep libsfml
+
+ou alors :
+
+```bash
+# apt-get install build-essential mesa-common-dev libx11-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev libfreetype6-dev libopenal-dev libsndfile1-dev
 ```
 
 Ensuite, un simple
 
-```
-make
+```bash
+$ make
 ```
 
 devrait suffire.
@@ -48,8 +54,8 @@ Comment jouer ?
 
 Pour démarrer le jeu, il faut exécuter la commande :
 
-```
-./bankshoot
+```bash
+$ ./bankshoot
 ```
 
 On arrive ensuite sur un écran d'introdution, sur lequel on peut appuyer
