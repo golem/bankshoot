@@ -62,6 +62,9 @@ bankshoot: $(OBJ)
 %.o: %.cpp
 	$(CXX) -o $@ -c $< $(CFLAGS)
 
+doc:
+	doxygen Doxyfile
+
 .PHONY: clean mrproper
 
 clean:
